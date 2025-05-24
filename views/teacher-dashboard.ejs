@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Teacher Dashboard</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #e0e0e0, #f8f8f8);
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #111;
+    }
+
+    .glass-container {
+      width: 100%;
+      max-width: 850px;
+      padding: 3rem 2.5rem;
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      text-align: center;
+    }
+
+    header {
+      font-size: 2.7rem;
+      margin-bottom: 1rem;
+      color: #222;
+      animation: fadeIn 1s ease;
+    }
+
+    .info {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: #333;
+      animation: fadeIn 1.5s ease;
+    }
+
+    blockquote {
+      font-size: 1.3rem;
+      font-style: italic;
+      color: #555;
+      margin: 2rem auto;
+      max-width: 600px;
+      position: relative;
+      padding: 1.2rem 1.5rem;
+      border-left: 5px solid #3498db;
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 10px;
+      animation: fadeIn 2s ease;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 3rem 0;
+      animation: fadeIn 2.5s ease;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .btn.notice {
+      background-color: #3498db; /* Blue */
+    }
+
+    .btn.notice:hover {
+      background-color: #2980b9;
+    }
+
+    .btn.note {
+      background-color: #27ae60; /* Green */
+    }
+
+    .btn.note:hover {
+      background-color: #1e8449;
+    }
+
+    .logout-btn {
+      margin-top: 2rem;
+      display: inline-block;
+      background-color: #e74c3c; /* Red */
+      padding: 0.7rem 1.6rem;
+      border-radius: 50px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .logout-btn:hover {
+      background-color: #c0392b;
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="glass-container">
+    <header>Welcome, <%= user.name %> (Teacher)</header>
+    <div class="info">
+      <p><strong>Email:</strong> <%= user.email %></p>
+    </div>
+
+    <blockquote>
+      "A good teacher can inspire hope, ignite the imagination, and instill a love of learning."
+    </blockquote>
+
+    <div class="button-group">
+      <a href="/upload-notice" class="btn notice">📢 Upload Notice</a>
+      <a href="/upload-note" class="btn note">📚 Upload Note</a>
+    </div>
+
+    <a href="/" class="logout-btn">Logout</a>
+  </div>
+</body>
+</html>

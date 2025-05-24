@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Notice</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e3f2fd, #f2f4f8);
+      padding: 3rem;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: auto;
+      background: white;
+      padding: 2.5rem 3rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #007bff;
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    input[type="text"], input[type="file"] {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+
+    button {
+      background: #007bff;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #0056b3;
+      transform: translateY(-2px);
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 1rem;
+      background: #6c757d;
+    }
+
+    .back-btn:hover {
+      background: #495057;
+    }
+
+    .notice-img {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .notice-card {
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+
+    .notice-card:hover {
+      transform: scale(1.03);
+    }
+
+    .notice-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .notice-card form {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .notice-card button {
+      background: #dc3545;
+      padding: 6px 12px;
+      font-size: 0.85rem;
+      border-radius: 8px;
+    }
+
+    .notice-card button:hover {
+      background: #a71d2a;
+    }
+
+    .no-notice {
+      text-align: center;
+      color: #888;
+      font-size: 1.1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/teacher" class="back-btn">
+      <button type="button">🔙 Back to Dashboard</button>
+    </a>
+
+    <h2>📢 Upload Notice</h2>
+
+    <form action="/upload-notice" method="POST" enctype="multipart/form-data">
+      <input type="text" name="title" placeholder="Enter Notice Title" required />
+      <input type="file" name="noticeImage" accept="image/png, image/jpeg" required />
+      <button type="submit">Upload Notice</button>
+    </form>
+
+    <% if (notices && notices.length > 0) { %>
+      <div class="notice-img">
+        <% notices.forEach(notice => { %>
+          <div class="notice-card">
+            <img src="/uploads/<%= notice.filename %>" alt="<%= notice.title %>">
+            <form action="/upload-notice/delete/<%= notice._id %>" method="POST">
+              <button type="submit">Delete</button>
+            </form>
+          </div>
+        <% }); %>
+      </div>
+    <% } else { %>
+      <p class="no-notice">No notices uploaded yet.</p>
+    <% } %>
+  </div>
+</body>
+</html>

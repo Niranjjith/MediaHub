@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Upload Note / QP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e0ecff, #f5f7fa);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      animation: fadeIn 1s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .container {
+      background: #ffffff;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      max-width: 480px;
+      width: 100%;
+      animation: slideUp 0.6s ease;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.9rem;
+      margin-bottom: 25px;
+      color: #2c3e50;
+    }
+    input[type="text"],
+    select,
+    input[type="file"] {
+      width: 100%;
+      padding: 14px 16px;
+      margin: 12px 0;
+      border: 1px solid #dce3f0;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      background-color: #f8faff;
+    }
+    input:focus,
+    select:focus {
+      border-color: #6c63ff;
+      outline: none;
+      background: #fff;
+      box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.2);
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #6c63ff, #4e54c8);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: background 0.4s ease, transform 0.2s ease;
+      margin-top: 20px;
+    }
+    button:hover {
+      background: linear-gradient(135deg, #574b90, #4e54c8);
+      transform: translateY(-2px);
+    }
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-top: 25px;
+      gap: 10px;
+    }
+    .btn-link {
+      flex: 1;
+      padding: 12px 0;
+      background: #f0f3fa;
+      color: #333;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    .btn-link:hover {
+      background: #dfe6f1;
+      transform: translateY(-1px);
+    }
+    @media (max-width: 480px) {
+      .container {
+        margin: 20px;
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>📄 Upload Note / QP</h1>
+
+    <form action="/upload-note" method="POST" enctype="multipart/form-data">
+      <input type="text" name="title" placeholder="Enter Title" required>
+
+      <select name="semester" id="semester" onchange="updateSubjects()" required>
+        <option value="">Select Semester</option>
+        <option value="1">Semester 1</option>
+        <option value="2">Semester 2</option>
+        <option value="3">Semester 3</option>
+        <option value="4">Semester 4</option>
+        <option value="5">Semester 5</option>
+        <option value="6">Semester 6</option>
+      </select>
+
+      <select name="subject" id="subject" required>
+        <option value="">Select Subject</option>
+      </select>
+
+      <select name="category" required>
+        <option value="">Select Category</option>
+        <option value="Note">Note</option>
+        <option value="QP">Question Paper</option>
+      </select>
+
+      <input type="file" name="file" required>
+
+      <button type="submit">Upload</button>
+    </form>
+
+    <div class="button-group">
+      <a href="/teacher" class="btn-link">← Dashboard</a>
+      <a href="/uploads" class="btn-link">📁 View Files</a>
+    </div>
+  </div>
+
+  <script>
+    const subjectsBySemester = {
+      1: ["Mathematics I", "Physics I", "English", "Computer Basics", "Environmental Science"],
+      2: ["Mathematics II", "Physics II", "C Programming", "Electronics", "Engineering Graphics"],
+      3: ["Data Structures", "Discrete Math", "Digital Logic", "OOPs in C++", "Operating Systems"],
+      4: ["DBMS", "Computer Networks", "Java", "Microprocessors", "Software Engineering"],
+      5: ["Web Technologies", "Machine Learning", "Computer Architecture", "Theory of Computation", "Mobile App Dev"],
+      6: ["Cloud Computing", "Cyber Security", "IoT", "Data Analytics", "AI & Robotics"]
+    };
+
+    function updateSubjects() {
+      const semester = document.getElementById("semester").value;
+      const subjectDropdown = document.getElementById("subject");
+      subjectDropdown.innerHTML = '<option value="">Select Subject</option>';
+      
+      if (subjectsBySemester[semester]) {
+        subjectsBySemester[semester].forEach(subject => {
+          const option = document.createElement("option");
+          option.value = subject;
+          option.textContent = subject;
+          subjectDropdown.appendChild(option);
+        });
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>📚 Uploaded Notes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #74ebd5, #ACB6E5);
+      color: #222;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .glass-container {
+      background: rgba(255, 255, 255, 0.35);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.3);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 30px;
+      max-width: 1050px;
+      width: 100%;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2.2rem;
+      color: #222;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .back-button {
+      padding: 8px 16px;
+      background: #000;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .back-button:hover {
+      background: #333;
+    }
+
+    form {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    select, button {
+      padding: 8px 16px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+    }
+
+    button {
+      background: #000;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #333;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: center;
+      color: #222;
+    }
+
+    th {
+      background: rgba(0, 0, 0, 0.2);
+      color: #fff;
+    }
+
+    tr:nth-child(even) {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    a.file-link {
+      color: #000;
+      background: #fff;
+      padding: 6px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    a.file-link:hover {
+      background: #ddd;
+    }
+
+    form.delete-form {
+      display: inline;
+    }
+
+    .delete-btn {
+      background: #e63946;
+      color: #fff;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .delete-btn:hover {
+      background: #c62828;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="glass-container">
+    <div class="top-bar">
+      <a href="/upload-note" class="back-button">← Back to Upload</a>
+      <h1>📚 Uploaded Notes</h1>
+      <div></div>
+    </div>
+
+    <form method="GET" action="/uploads">
+      <select name="semester">
+        <option value="">Semester</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select>
+
+      <select name="category">
+        <option value="">All Types</option>
+        <option value="Note">Note</option>
+        <option value="QP">Question Paper</option>
+      </select>
+
+      <button type="submit">Filter</button>
+    </form>
+
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Semester</th>
+        <th>Subject</th>
+        <th>Type</th>
+        <th>File</th>
+        <th>Action</th>
+      </tr>
+      <% notes.forEach(note => { %>
+        <tr>
+          <td><%= note.title %></td>
+          <td><%= note.semester %></td>
+          <td><%= note.subject %></td>
+          <td><%= note.category === 'QP' ? 'Question Paper' : 'Note' %></td>
+          <td><a class="file-link" href="/uploads/notes/<%= note.filename %>" target="_blank">View</a></td>
+          <td>
+            <form method="POST" action="/delete-note/<%= note._id %>">
+              <button class="delete-btn" type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </table>
+  </div>
+</body>
+</html>

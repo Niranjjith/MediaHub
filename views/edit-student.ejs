@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Edit Student</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background: #f8fafc;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .container {
+      max-width: 480px;
+      background: #fff;
+      padding: 2.5rem 2rem;
+      margin-top: 4rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    h1 {
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      color: #343a40;
+      margin-bottom: 2rem;
+      text-align: center;
+      text-transform: uppercase;
+      border-bottom: 3px solid #0d6efd; /* Bootstrap primary blue */
+      padding-bottom: 0.5rem;
+    }
+    label {
+      font-weight: 600;
+      color: #495057;
+      letter-spacing: 0.5px;
+    }
+    input.form-control, select.form-select {
+      border-radius: 10px;
+      border: 1.5px solid #ced4da;
+      padding: 0.6rem 1rem;
+      font-weight: 500;
+      transition: border-color 0.3s ease;
+    }
+    input.form-control:focus, select.form-select:focus {
+      border-color: #0d6efd;
+      box-shadow: 0 0 8px rgba(13, 110, 253, 0.4);
+      outline: none;
+    }
+    .btn-primary {
+      background: #0d6efd;
+      border: none;
+      padding: 0.6rem 1.8rem;
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow: 0 6px 15px rgba(13, 110, 253, 0.4);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 10px;
+      letter-spacing: 0.7px;
+    }
+    .btn-primary:hover {
+      background: #084cdf;
+      box-shadow: 0 8px 25px rgba(8, 76, 223, 0.6);
+    }
+    .btn-secondary {
+      padding: 0.6rem 1.8rem;
+      font-weight: 600;
+      border-radius: 10px;
+      letter-spacing: 0.7px;
+      transition: background 0.3s ease;
+    }
+    .btn-secondary:hover {
+      background: #6c757d;
+      color: #fff;
+    }
+    .btn-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1.8rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container shadow-sm">
+    <h1>Edit Student</h1>
+    <form action="/admin/edit-student/<%= student._id %>" method="POST" novalidate>
+      <div class="mb-4">
+        <label for="name" class="form-label">Name</label>
+        <input id="name" type="text" name="name" class="form-control" value="<%= student.name %>" required />
+      </div>
+      <div class="mb-4">
+        <label for="email" class="form-label">Email</label>
+        <input id="email" type="email" name="email" class="form-control" value="<%= student.email %>" required />
+      </div>
+      <div class="mb-4">
+        <label for="semester" class="form-label">Semester</label>
+        <select id="semester" name="semester" class="form-select" required>
+          <% for(let i=1; i<=6; i++) { %>
+            <option value="<%= i %>" <%= student.semester == i ? 'selected' : '' %> ><%= i %></option>
+          <% } %>
+        </select>
+      </div>
+      <div class="btn-group">
+        <button type="submit" class="btn btn-primary">Update Student</button>
+        <a href="/admin" class="btn btn-secondary">Back</a>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

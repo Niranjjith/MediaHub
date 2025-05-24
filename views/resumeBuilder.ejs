@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Resume Builder - Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 30px;
+      display: flex;
+      gap: 30px;
+    }
+
+    .container {
+      display: flex;
+      gap: 30px;
+      width: 100%;
+    }
+
+    .form, .preview {
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      flex: 1;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .form h2 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    .form input, .form textarea {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    button {
+      background-color: #5f27cd;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    .preview {
+      background: #fff;
+      color: #222;
+      padding: 40px 30px;
+      border-radius: 12px;
+      font-family: 'Inter', sans-serif;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .preview h1 {
+      font-size: 36px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .preview h2 {
+      font-size: 18px;
+      font-weight: 500;
+      color: #5f27cd;
+      margin-top: 5px;
+    }
+
+    .contact-info {
+      margin-top: 20px;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .contact-info a {
+      color: #333;
+      text-decoration: none;
+    }
+
+    .section {
+      margin-top: 30px;
+    }
+
+    .section h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #5f27cd;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .section ul {
+      list-style: disc;
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .section p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #eee;
+      margin: 20px 0;
+    }
+
+    @media(max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Left Panel -->
+    <div class="form">
+      <h2>Personal Info</h2>
+      <input type="text" id="nameInput" placeholder="Full Name" />
+      <input type="text" id="roleInput" placeholder="Role (e.g. Full Stack Developer)" />
+      <input type="text" id="phoneInput" placeholder="Phone" />
+      <input type="email" id="emailInput" placeholder="Email" />
+      <input type="text" id="linkedinInput" placeholder="LinkedIn URL" />
+      <input type="text" id="githubInput" placeholder="GitHub URL" />
+      <input type="text" id="locationInput" placeholder="Location (e.g. Remote, India)" />
+
+      <h2>Summary</h2>
+      <textarea id="summaryInput" rows="4" placeholder="Brief summary of your background and goals..."></textarea>
+
+      <h2>Skills (comma-separated)</h2>
+      <textarea id="skillsInput" rows="2" placeholder="e.g. JavaScript, Node.js, MongoDB"></textarea>
+
+      <h2>Certificates (comma-separated)</h2>
+      <textarea id="certificatesInput" rows="2" placeholder="e.g. AWS Certified, Google Cloud Fundamentals"></textarea>
+
+      <h2>Projects (comma-separated)</h2>
+      <textarea id="projectsInput" rows="2" placeholder="e.g. Portfolio Website, College Management App"></textarea>
+
+      <h2>Hobbies (comma-separated)</h2>
+      <textarea id="hobbiesInput" rows="2" placeholder="e.g. Photography, Blogging, Chess"></textarea>
+
+      <button onclick="downloadPDF()">Download Resume</button>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="preview" id="resumePreview">
+      <h1 id="previewName">Your Name</h1>
+      <h2 id="previewRole">Full Stack Developer</h2>
+
+      <div class="contact-info">
+        📞 <span id="previewPhone">Phone</span><br />
+        📧 <span id="previewEmail">Email</span><br />
+        🔗 <a href="#" id="previewLinkedIn">LinkedIn</a><br />
+        💻 <a href="#" id="previewGitHub">GitHub</a><br />
+        📍 <span id="previewLocation">Location</span>
+      </div>
+
+      <div class="section">
+        <h3>Summary</h3>
+        <p id="previewSummary">Your summary goes here.</p>
+      </div>
+
+      <div class="section">
+        <h3>Skills</h3>
+        <ul id="previewSkillsList"></ul>
+      </div>
+
+      <div class="section">
+        <h3>Certificates</h3>
+        <ul id="previewCertificatesList"></ul>
+      </div>
+
+      <div class="section">
+        <h3>Projects</h3>
+        <ul id="previewProjectsList"></ul>
+      </div>
+
+      <div class="section">
+        <h3>Hobbies</h3>
+        <ul id="previewHobbiesList"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function updateList(inputId, listId) {
+      const items = document.getElementById(inputId).value.split(',');
+      const listElement = document.getElementById(listId);
+      listElement.innerHTML = '';
+      items.forEach(item => {
+        if (item.trim()) {
+          const li = document.createElement('li');
+          li.innerText = item.trim();
+          listElement.appendChild(li);
+        }
+      });
+    }
+
+    document.getElementById('skillsInput').addEventListener('input', () => updateList('skillsInput', 'previewSkillsList'));
+    document.getElementById('certificatesInput').addEventListener('input', () => updateList('certificatesInput', 'previewCertificatesList'));
+    document.getElementById('projectsInput').addEventListener('input', () => updateList('projectsInput', 'previewProjectsList'));
+    document.getElementById('hobbiesInput').addEventListener('input', () => updateList('hobbiesInput', 'previewHobbiesList'));
+
+    const fields = [
+      ['nameInput', 'previewName'],
+      ['roleInput', 'previewRole'],
+      ['phoneInput', 'previewPhone'],
+      ['emailInput', 'previewEmail'],
+      ['linkedinInput', 'previewLinkedIn'],
+      ['githubInput', 'previewGitHub'],
+      ['locationInput', 'previewLocation'],
+      ['summaryInput', 'previewSummary']
+    ];
+
+    fields.forEach(([input, preview]) => {
+      document.getElementById(input).addEventListener('input', function () {
+        if (preview === 'previewLinkedIn' || preview === 'previewGitHub') {
+          document.getElementById(preview).href = this.value;
+          document.getElementById(preview).innerText = this.value;
+        } else {
+          document.getElementById(preview).innerText = this.value;
+        }
+      });
+    });
+
+    function downloadPDF() {
+      const element = document.getElementById("resumePreview");
+      html2pdf().from(element).save("resume.pdf");
+    }
+  </script>
+
+</body>
+</html>

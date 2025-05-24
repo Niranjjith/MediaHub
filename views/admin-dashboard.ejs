@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background: #f8fafc;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .dashboard-header {
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #343a40;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+    .card-counter {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      padding: 1.5rem 2rem;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      transition: 0.3s ease-in-out;
+    }
+    .card-counter:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+    .card-counter.primary {
+      background: linear-gradient(45deg, #007bff, #0056b3);
+    }
+    .card-counter.success {
+      background: linear-gradient(45deg, #28a745, #19692c);
+    }
+    .card-counter .count {
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .card-counter .title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      opacity: 0.85;
+      margin-top: 0.4rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* Table Styles */
+    table {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    thead {
+      background-color: #343a40;
+      color: #fff;
+      font-weight: 600;
+      letter-spacing: 0.7px;
+    }
+    tbody tr:hover {
+      background-color: #f1f3f5;
+      cursor: pointer;
+      transition: background-color 0.25s ease;
+    }
+    .btn-primary {
+      background: #007bff;
+      border: none;
+      box-shadow: 0 4px 15px rgba(0,123,255,0.3);
+      transition: background 0.3s ease;
+    }
+    .btn-primary:hover {
+      background: #0056b3;
+      box-shadow: 0 6px 20px rgba(0,86,179,0.5);
+    }
+    .btn-warning {
+      background: #ffc107;
+      border: none;
+      color: #212529;
+      box-shadow: 0 4px 15px rgba(255,193,7,0.3);
+      transition: background 0.3s ease;
+    }
+    .btn-warning:hover {
+      background: #d39e00;
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(211,158,0,0.5);
+    }
+    .btn-danger {
+      background: #dc3545;
+      border: none;
+      box-shadow: 0 4px 15px rgba(220,53,69,0.3);
+      transition: background 0.3s ease;
+    }
+    .btn-danger:hover {
+      background: #a71d2a;
+      box-shadow: 0 6px 20px rgba(167,29,42,0.5);
+    }
+
+    /* Filter styling */
+    .filter-section {
+      background: #fff;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      max-width: 320px;
+    }
+    .filter-section label {
+      font-weight: 600;
+      color: #495057;
+      margin-right: 0.8rem;
+    }
+    .form-select {
+      border-radius: 8px;
+      padding: 0.4rem 1rem;
+      font-weight: 500;
+      border: 1.5px solid #ced4da;
+      transition: border-color 0.3s ease;
+    }
+    .form-select:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 5px rgba(0,123,255,0.5);
+      outline: none;
+    }
+
+    /* Section headings */
+    h2 {
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #343a40;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      border-bottom: 3px solid #007bff;
+      padding-bottom: 0.3rem;
+    }
+
+.btn-outline-danger {
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="container mt-5 mb-5">
+
+    <h1 class="dashboard-header">Admin Dashboard</h1>
+    
+
+    <div class="row g-4 mb-5">
+      <div class="col-md-6">
+        <div class="card-counter primary">
+          <div class="count"><%= totalStudents %></div>
+          <div class="title">Total Students</div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card-counter success">
+          <div class="count"><%= totalTeachers %></div>
+          <div class="title">Total Teachers</div>
+        </div>
+      </div>
+    </div>
+<div class="mb-3 d-flex">
+  <a href="/" class="btn btn-outline-danger">Logout</a>
+</div>
+
+
+
+    <form method="GET" action="/admin" class="filter-section">
+      <label for="semester">Filter by Semester:</label>
+      <select name="semester" id="semester" onchange="this.form.submit()">
+        <option value="">All</option>
+        <% ['1','2','3','4','5','6'].forEach(s => { %>
+          <option value="<%= s %>" <%= selectedSemester === s ? 'selected' : '' %> >Semester <%= s %></option>
+        <% }) %>
+      </select>
+    </form>
+
+    <!-------------- Students Section ------------------->
+
+    <section class="mb-5">
+      <h2>Students</h2>
+      <a href="/admin/add-student" class="btn btn-primary mb-3">Add Student</a>
+      <div class="table-responsive shadow-sm rounded">
+        <table class="table table-hover align-middle">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Semester</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% students.forEach(student => { %>
+              <tr>
+                <td><%= student.name %></td>
+                <td><%= student.email %></td>
+                <td><%= student.semester %></td>
+                <td>
+                  <a href="/admin/edit-student/<%= student._id %>" class="btn btn-warning btn-sm me-2">Edit</a>
+                  <form action="/admin/delete-student/<%= student._id %>" method="POST" style="display:inline-block;">
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Delete this student?');">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!---------------------- Teachers Section ----------------------------->
+    
+    <section>
+      <h2>Teachers</h2>
+      <a href="/admin/add-teacher" class="btn btn-primary mb-3">Add Teacher</a>
+      <div class="table-responsive shadow-sm rounded">
+        <table class="table table-hover align-middle">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% teachers.forEach(teacher => { %>
+              <tr>
+                <td><%= teacher.name %></td>
+                <td><%= teacher.email %></td>
+                <td>
+                  <a href="/admin/edit-teacher/<%= teacher._id %>" class="btn btn-warning btn-sm me-2">Edit</a>
+                  <form action="/admin/delete-teacher/<%= teacher._id %>" method="POST" style="display:inline-block;">
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Delete this teacher?');">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
