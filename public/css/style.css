@@ -638,8 +638,6 @@ nav {
     justify-content: center;
     gap: 1.5rem;
   }
-
-  /* Make divider horizontal */
   .divider-line {
     width: 100%;
     height: 2px;
@@ -850,85 +848,97 @@ nav {
   line-height: 1.4;
   margin-bottom: 5px;
 }
+
+/* Contact Section */
+
 .contact {
+  height: 100vh; 
   padding: 60px 20px;
-  background: #f0f6ff;
+  background: linear-gradient(to right top, #e8f0ff, #ffffff);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  overflow: hidden; 
 }
 
+
 .contact .section-heading {
-  font-size: 2.5rem;
-  color: #003b99;
+  font-size: 3rem;
+  color: #002e9b;
   margin-bottom: 40px;
+  font-weight: 800;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .contact-container-column {
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  align-items: center;
+  max-width: 700px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px 50px;
+  border-radius: 25px;
+  box-shadow: 0 12px 40px rgba(0, 71, 225, 0.1);
+  backdrop-filter: blur(5px);
 }
 
 .contact-form {
   width: 100%;
-  background: white;
-  padding: 30px 40px;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0, 102, 255, 0.15);
   text-align: left;
 }
 
 .contact-form label {
   display: block;
   font-weight: 600;
-  margin: 15px 0 8px;
-  color: #002bff;
+  margin: 20px 0 10px;
+  color: #0047e1;
+  font-size: 1.05rem;
 }
 
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  padding: 12px 15px;
+  padding: 14px 18px;
   border: 2px solid #cce0ff;
-  border-radius: 10px;
+  border-radius: 12px;
   font-size: 1rem;
-  outline: none;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
   font-family: inherit;
+  background-color: #f8fbff;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
   border-color: #0047e1;
+  box-shadow: 0 0 10px rgba(0, 71, 225, 0.2);
 }
 
 .btn-submit {
-  margin-top: 25px;
-  background: #0047e1;
+  margin-top: 30px;
+  background: linear-gradient(135deg, #0047e1, #0066ff);
   color: white;
   font-weight: 700;
-  padding: 14px 0;
+  padding: 16px;
   border: none;
   width: 100%;
-  border-radius: 12px;
+  border-radius: 14px;
   font-size: 1.1rem;
   cursor: pointer;
-  transition: background 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 71, 225, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 16px rgba(0, 71, 225, 0.3);
 }
 
 .btn-submit:hover {
-  background: #002e9b;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 71, 225, 0.4);
 }
 
-/* Social buttons container below form */
 .social-buttons {
   display: flex;
   justify-content: center;
   gap: 50px;
   flex-wrap: wrap;
+  margin-top: 40px;
 }
 
 .social-btn {
@@ -940,31 +950,31 @@ nav {
   font-weight: 700;
   font-size: 1.1rem;
   transition: color 0.3s ease, transform 0.3s ease;
-  cursor: pointer;
 }
 
 .social-btn img {
-  width: 60px;
-  height: 60px;
+  width: 65px;
+  height: 65px;
   object-fit: contain;
-  margin-bottom: 8px;
-  filter: drop-shadow(0 0 3px #0047e1);
-  transition: filter 0.3s ease;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 71, 225, 0.2);
+  transition: transform 0.3s ease;
 }
 
 .social-btn:hover {
+  transform: translateY(-4px);
   color: #002e9b;
-  transform: scale(1.1);
 }
 
 .social-btn:hover img {
-  filter: drop-shadow(0 0 10px #002e9b);
+  transform: scale(1.1);
 }
 
-/* Responsive */
+/* Mobile */
 @media (max-width: 480px) {
-  .contact-form {
-    padding: 25px 20px;
+  .contact-container-column {
+    padding: 30px 20px;
   }
 
   .social-buttons {
@@ -976,10 +986,11 @@ nav {
     height: 50px;
   }
 
-  .social-btn {
-    font-size: 1rem;
+  .contact .section-heading {
+    font-size: 2rem;
   }
 }
+
 .footer {
   position: fixed;
   bottom: 0;
@@ -1004,7 +1015,7 @@ nav {
   color: #ffe600; /* yellow highlight on hover */
 }
 
-/* To prevent content being hidden under footer, add bottom padding to body */
 body {
-  padding-bottom: 60px; /* same height as footer + some */
+  padding-bottom: 0;
+  margin: 0;
 }
