@@ -307,3 +307,451 @@ nav {
     margin-bottom: 2rem;
   }
 }
+/* Team / Faculty Section */
+/* Team Members Section */
+.team-container {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 4rem;
+  flex-wrap: wrap;
+}
+
+.team-member {
+  text-align: center;
+  max-width: 180px;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1s ease forwards;
+}
+
+.team-member img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #007BFF; /* blue border */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.team-member img:hover {
+  transform: scale(1.05);
+}
+
+.team-member h4 {
+  font-size: 1.2rem;
+  color: #007BFF;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+.team-member p {
+  font-size: 1rem;
+  color: #666;
+  font-style: italic;
+}
+
+/* Animation keyframes for fade up */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive: stack on smaller screens */
+@media (max-width: 768px) {
+  .team-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .team-member {
+    max-width: 240px;
+    margin-bottom: 2rem;
+  }
+}
+
+
+/* Faculties Heading */
+.faculties-heading {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #007BFF;
+  margin: 4rem 0 2rem 0;
+  position: relative;
+}
+
+.faculties-heading::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #FFC107; /* yellow accent */
+  border-radius: 2px;
+  margin: 0.8rem auto 0 auto;
+}
+
+/* Faculty Members */
+.faculty-container {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.faculty-member {
+  text-align: center;
+  max-width: 180px;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1s ease forwards;
+}
+
+.faculty-member img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #007BFF;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.faculty-member img:hover {
+  transform: scale(1.05);
+}
+
+.faculty-member h4 {
+  font-size: 1.1rem;
+  color: #007BFF;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+.faculty-member p {
+  font-size: 0.95rem;
+  color: #666;
+  font-style: italic;
+}
+
+/* Reuse animation from above */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .faculty-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .faculty-member {
+    max-width: 240px;
+    margin-bottom: 2rem;
+  }
+}
+/* Course Outcomes Section */
+.outcome-heading {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #007BFF;
+  margin: 4rem 0 2rem 0;
+  position: relative;
+}
+
+.outcome-heading::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #FFC107;
+  border-radius: 2px;
+  margin: 0.8rem auto 0 auto;
+}
+
+.outcome-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin: 0 auto 4rem auto;
+  padding: 0 1rem;
+  max-width: 1200px;
+}
+
+.outcome-card {
+  background-color: #ffffff;
+  border-left: 6px solid #007BFF;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  padding: 1.5rem;
+  border-radius: 12px;
+  max-width: 340px;
+  flex: 1;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1s ease forwards;
+  cursor: pointer;
+}
+
+.outcome-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+
+.outcome-card:hover h4 {
+  color: #007BFF;
+  text-shadow: 0 0 8px rgba(0, 123, 255, 0.6);
+}
+
+
+.outcome-card p {
+  color: #333;
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+/* Reuse animation keyframes from before */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.about-features-heading {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #007BFF;
+  margin: 3rem 0 1.5rem 0;
+  position: relative;
+}
+
+.about-features-heading::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #FFC107;
+  border-radius: 2px;
+  margin: 0.8rem auto 0 auto;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0 1.5rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+.feature {
+  font-size: 1.1rem;
+  background: #f0f8ff;
+  padding: 1rem 1.2rem;
+  margin: 0.6rem 0;
+  border-left: 6px solid #007BFF;
+  border-radius: 10px;
+  color: #333;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.9s ease forwards;
+  transition: transform 0.3s ease;
+}
+
+.feature:hover {
+  transform: translateY(-4px);
+  background: #e0f0ff;
+}
+.enhancements-section {
+  background-color: #f5f9ff;
+  padding: 4rem 2rem;
+}
+
+.enhancements-heading {
+  text-align: center;
+  font-size: 2.4rem;
+  color: #007BFF;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.enhancements-heading::after {
+  content: "";
+  width: 70px;
+  height: 4px;
+  background: #FFD700;
+  display: block;
+  margin: 0.8rem auto 0;
+  border-radius: 2px;
+}
+
+.enhancement-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.enhancement-card {
+  background-color: #ffffff;
+  padding: 2rem 1.5rem;
+  border-radius: 16px;
+  text-align: center;
+  border-top: 6px solid #007BFF;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1s ease forwards;
+}
+
+.enhancement-card span {
+  font-size: 2.2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.enhancement-card h4 {
+  font-size: 1.25rem;
+  color: #007BFF;
+  margin-bottom: 0.5rem;
+}
+
+.enhancement-card p {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.enhancement-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+.about-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #007BFF;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.about-heading::after {
+  content: '';
+  width: 80px;
+  height: 4px;
+  background: #FFD700;
+  display: block;
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+.team-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  background: #ffffff;
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+  margin: 3rem auto;
+  max-width: 1200px;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.team-left,
+.team-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.divider-line {
+  background: #007BFF;
+  border-radius: 2px;
+  margin: 0 1rem;
+
+  /* vertical line */
+  width: 2px;
+  height: 100%;
+  min-height: 300px;
+}
+
+/* team member styles */
+.team-member {
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.team-member img {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.team-member.square img {
+  border-radius: 12px;
+}
+
+.team-member.round img {
+  border-radius: 50%;
+}
+
+.team-member h4 {
+  font-size: 1.1rem;
+  margin: 0.5rem 0 0.3rem;
+  color: #007BFF;
+}
+
+.team-member p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.team-member:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive: mobile view (max-width 768px) */
+@media (max-width: 768px) {
+  .team-box {
+    flex-direction: column;
+    padding: 2rem 1rem;
+  }
+
+  .team-left,
+  .team-right {
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  /* Make divider horizontal */
+  .divider-line {
+    width: 100%;
+    height: 2px;
+    min-height: auto;
+    margin: 1.5rem 0;
+  }
+
+  .team-member img {
+    width: 100px;
+    height: 100px;
+  }
+}
