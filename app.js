@@ -48,3 +48,5 @@ app.use('/student', studentRoutes);
 const noticeRoutes = require('./routes/Notice');
 
 app.use('/', noticeRoutes);
+const contactRoutes = require('./routes/contact');
+app.use('/', contactRoutes);

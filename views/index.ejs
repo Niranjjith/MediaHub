@@ -164,15 +164,101 @@
   <div class="gallery-container">
     <button class="scroll-btn left" onclick="scrollGallery(-1)">&#10094;</button>
     <div class="gallery-images" id="galleryScroll">
-      <img src="images/img1.jpg" alt="Gallery Image 1">
-      <img src="images/img2.jpg" alt="Gallery Image 2">
-      <img src="images/img3.jpg" alt="Gallery Image 3">
-      <img src="images/img4.jpg" alt="Gallery Image 4">
-      <img src="images/img5.jpg" alt="Gallery Image 5">
+      <img src="/images/1.png" alt="Gallery Image 1">
+      <img src="/images/2.png" alt="Gallery Image 2">
+      <img src="/images/3.png" alt="Gallery Image 3">
+      <img src="/images/4.jpg" alt="Gallery Image 4">
+      <img src="/images/5.jpeg" alt="Gallery Image 5">
+      <img src="images/img6.jpg" alt="Gallery Image 6">
+      <img src="images/img7.jpg" alt="Gallery Image 7">
+      <img src="images/img8.jpg" alt="Gallery Image 8">
     </div>
     <button class="scroll-btn right" onclick="scrollGallery(1)">&#10095;</button>
   </div>
+
+  <div class="achievements">
+  <h2 class="section-heading">Student Achievements</h2>
+  <div class="achievement-cards">
+    <div class="achievement-card">
+      <img src="/images/4.jpg" alt="Muhammed Unais">
+      <h3>Muhammed Unais</h3>
+      <p class="course">BSC MM 23–26</p>
+      <p class="highlight">Participated in Group Level Selection Camp for IGC Shooting (NCC)</p>
+    </div>
+    <div class="achievement-card">
+      <img src="/images/1.png" alt="Sajin M Joseph">
+      <h3>Sajin M Joseph</h3>
+      <p class="course">BSC MM 22–25</p>
+      <p class="highlight">Secured Second Runner-Up in CM Trophy Table Tennis</p>
+    </div>
+    <div class="achievement-card">
+      <img src="/images/6.png" alt="Shamil Mohammed">
+      <h3>Shamil Mohammed</h3>
+      <p class="course">BSC MM 24–27</p>
+      <p class="highlight">First Prize in Poetry Writing, EN Gandhi Competition (Sevalaya – Gudallur)</p>
+    </div>
+  </div>
+</div>
+<div class="staff-achievements">
+  <h2 class="section-heading">Staff Achievements</h2>
+  <div class="achievement-cards">
+    <div class="achievement-card">
+      <img src="/images/2.png" alt="Dr. T. Preethi">
+      <h3>Dr. T. Preethi</h3>
+      <p class="highlight">Student's Favorite Faculty award by Nilgiri Students Government</p>
+      <p class="highlight">UR, External Examiner & Question Paper Settings</p>
+      <p class="highlight">Attended FDP</p>
+    </div>
+    <div class="achievement-card">
+      <img src="/images/1.png" alt="Mr. Muhammad Savad">
+      <h3>Mr. Muhammad Savad</h3>
+      <p class="highlight">Qualified UGC NET for second time</p>
+      <p class="highlight">Completed “Teacher Essentials” course – Canva Design School</p>
+    </div>
+  </div>
+</div>
+
 </section>
+<section class="contact" id="contact">
+  <h2 class="section-heading">Contact Us</h2>
+  <div class="contact-container-column">
+
+<form id="contactForm" class="contact-form" method="POST">
+  <label for="name">Name</label>
+  <input type="text" id="name" name="name" required />
+
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" required />
+
+  <label for="message">Message</label>
+  <textarea id="message" name="message" rows="5" required></textarea>
+
+  <button type="submit" id="submitBtn" class="btn-submit">Send Message</button>
+</form>
+
+
+
+
+    <div class="social-buttons">
+      <a href="#" class="social-btn">
+        <img src="/images/blog.jpg" alt="Blog Icon" />
+        <span>Blog</span>
+      </a>
+      <a href="#" class="social-btn">
+        <img src="/images/facebook.jpg" alt="Facebook Icon" />
+        <span>Facebook</span>
+      </a>
+      <a href="#" class="social-btn">
+        <img src="/images/instagram.jpg" alt="Instagram Icon" />
+        <span>Instagram</span>
+      </a>
+    </div>
+  </div>
+</section>
+<footer class="footer">
+  <p>© 2025 Multihub Departmental Portal. All rights reserved.</p>
+</footer>
+
 
   </header>
 
@@ -206,12 +292,43 @@
 
   function scrollGallery(direction) {
     const container = document.getElementById("galleryScroll");
-    const scrollAmount = container.offsetWidth / 1.5;
+    const scrollAmount = 320 * 4; // image width + gap × 4
     container.scrollBy({
       left: direction * scrollAmount,
       behavior: 'smooth'
     });
   }
+
+  const form = document.getElementById('contactForm');
+  const button = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('/contact', {
+        method: 'POST',
+        body: new URLSearchParams(formData),
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      });
+
+      if (response.ok) {
+        button.textContent = 'Message Sent';
+        button.disabled = true;
+        form.reset(); // optional: clears the form
+      } else {
+        button.textContent = 'Try Again';
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      button.textContent = 'Error!';
+    }
+  });
+  
 </script>
 
 

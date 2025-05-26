@@ -653,44 +653,66 @@ nav {
   }
 }
 .gallery {
-  padding: 60px 20px;
-  background: #f5faff;
+  padding: 80px 20px;
+  background: linear-gradient(to right, #f0f8ff, #e6f7ff);
   text-align: center;
 }
 
 .section-heading {
-  font-size: 2.5rem;
-  color: #0051ff;
-  margin-bottom: 30px;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #002bff;
+  margin-bottom: 40px;
   text-transform: uppercase;
   letter-spacing: 2px;
+  position: relative;
+}
+
+.section-heading::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #ffd700;
+  margin: 10px auto 0;
+  border-radius: 2px;
 }
 
 .gallery-container {
   position: relative;
   display: flex;
+  justify-content: center;
   align-items: center;
-  overflow: hidden;
-  max-width: 100%;
+  max-width: 1200px;
   margin: auto;
+  overflow: hidden;
+  padding: 20px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(0, 51, 255, 0.1);
 }
 
 .gallery-images {
   display: flex;
-  overflow-x: auto;
-  scroll-behavior: smooth;
   gap: 20px;
-  padding: 10px;
+  overflow-x: hidden; /* hides extra images */
+  scroll-behavior: smooth;
+  width: calc(300px * 4 + 60px); /* 4 images + gap */
 }
 
 .gallery-images img {
-  height: 250px;
-  border-radius: 12px;
-  transition: transform 0.3s ease;
+  min-width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 14px;
+  transition: 0.3s ease;
+  flex-shrink: 0;
 }
+
 
 .gallery-images img:hover {
   transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 119, 255, 0.4);
 }
 
 .scroll-btn {
@@ -705,12 +727,284 @@ nav {
   z-index: 1;
   top: 50%;
   transform: translateY(-50%);
+  transition: background 0.3s ease;
+}
+
+.scroll-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .scroll-btn.left {
-  left: 10px;
+  left: -10px;
 }
 
 .scroll-btn.right {
-  right: 10px;
+  right: -10px;
+}
+.achievements {
+  margin-top: 60px;
+  padding: 40px 20px;
+  background: linear-gradient(90deg, #e6f0ff, #ffffff);
+  text-align: center;
+}
+
+.achievement-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.achievement-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 0 15px rgba(0, 102, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.achievement-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 102, 255, 0.2);
+}
+
+.achievement-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 15px;
+}
+
+.achievement-card h3 {
+  font-size: 1.2rem;
+  color: #002bff;
+  margin: 10px 0 5px;
+}
+
+.achievement-card .course {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.achievement-card .highlight {
+  font-size: 0.9rem;
+  color: #444;
+  margin-top: 10px;
+  line-height: 1.4;
+}
+.staff-achievements {
+  margin-top: 60px;
+  padding: 40px 20px;
+  background: linear-gradient(90deg, #f5f9ff, #ffffff);
+  text-align: center;
+}
+
+.staff-achievements .section-heading {
+  font-size: 2rem;
+  color: #003b99;
+  margin-bottom: 30px;
+}
+
+.staff-achievements .achievement-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.staff-achievements .achievement-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 0 15px rgba(0, 102, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.staff-achievements .achievement-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 102, 255, 0.2);
+}
+
+.staff-achievements .achievement-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 15px;
+}
+
+.staff-achievements .achievement-card h3 {
+  font-size: 1.2rem;
+  color: #0052cc;
+  margin-bottom: 8px;
+}
+
+.staff-achievements .achievement-card .highlight {
+  font-size: 0.9rem;
+  color: #444;
+  line-height: 1.4;
+  margin-bottom: 5px;
+}
+.contact {
+  padding: 60px 20px;
+  background: #f0f6ff;
+  text-align: center;
+}
+
+.contact .section-heading {
+  font-size: 2.5rem;
+  color: #003b99;
+  margin-bottom: 40px;
+}
+
+.contact-container-column {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+
+.contact-form {
+  width: 100%;
+  background: white;
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 102, 255, 0.15);
+  text-align: left;
+}
+
+.contact-form label {
+  display: block;
+  font-weight: 600;
+  margin: 15px 0 8px;
+  color: #002bff;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #cce0ff;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+  font-family: inherit;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #0047e1;
+}
+
+.btn-submit {
+  margin-top: 25px;
+  background: #0047e1;
+  color: white;
+  font-weight: 700;
+  padding: 14px 0;
+  border: none;
+  width: 100%;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 71, 225, 0.5);
+}
+
+.btn-submit:hover {
+  background: #002e9b;
+}
+
+/* Social buttons container below form */
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.social-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #0047e1;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.social-btn img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 0 3px #0047e1);
+  transition: filter 0.3s ease;
+}
+
+.social-btn:hover {
+  color: #002e9b;
+  transform: scale(1.1);
+}
+
+.social-btn:hover img {
+  filter: drop-shadow(0 0 10px #002e9b);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .contact-form {
+    padding: 25px 20px;
+  }
+
+  .social-buttons {
+    gap: 30px;
+  }
+
+  .social-btn img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .social-btn {
+    font-size: 1rem;
+  }
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 20px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #f0f6ff;
+  background: rgba(0, 59, 153, 0.3); /* semi-transparent blue */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* for Safari */
+  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.15);
+  user-select: none;
+  z-index: 9999;
+  border-top: 1px solid rgba(255, 255, 255, 0.2); /* subtle top border */
+  transition: color 0.3s ease;
+}
+
+.footer:hover {
+  color: #ffe600; /* yellow highlight on hover */
+}
+
+/* To prevent content being hidden under footer, add bottom padding to body */
+body {
+  padding-bottom: 60px; /* same height as footer + some */
 }
