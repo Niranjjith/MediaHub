@@ -20,8 +20,8 @@
     <li><a href="#about">About</a></li>
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a class="btn login" href="#">Login</a></li>
-    <li><a class="btn signup" href="#">Signup</a></li>
+    <li><a class="btn login" href="/login">Login</a></li>
+    <li><a class="btn signup" href="/signup">Signup</a></li>
   </ul>
 </nav>
 
@@ -32,7 +32,7 @@
   <a href="#about" class="btn explore-btn">Explore</a>
 </div>
 
-    </section>
+</section>
 
 
     <section id="about" class="about-section">
@@ -84,6 +84,43 @@
 </ul>
 
 
+<h2 class="about-heading">About Us</h2>
+<div class="team-box">
+
+  <div class="team-left">
+    <div class="team-member square">
+      <img src="/images/princi.png" alt="Principal">
+      <h4>Dr. A. Sharma</h4>
+      <p>Principal</p>
+    </div>
+    <div class="team-member square">
+      <img src="/images/Maam.png" alt="HOD">
+      <h4>Prof. R. Mehta</h4>
+      <p>Head of Department</p>
+    </div>
+    <div class="team-member square">
+      <img src="/images/savad.png" alt="Sub HOD">
+      <h4>Dr. S. Iyer</h4>
+      <p>Sub-HOD</p>
+    </div>
+  </div>
+
+  <div class="divider-line"></div>
+
+  <div class="team-right">
+    <div class="team-member round">
+      <img src="/images/Mubashir.png" alt="Faculty 1">
+      <h4>Ms. P. Roy</h4>
+      <p>Faculty</p>
+    </div>
+    <div class="team-member round">
+      <img src="/images/Vandhana.png" alt="Faculty 2">
+      <h4>Mr. K. Das</h4>
+      <p>Faculty</p>
+    </div>
+  </div>
+</div>
+
 <section class="enhancements-section">
   <h3 class="enhancements-heading">Key Learning Enhancements</h3>
   <div class="enhancement-cards">
@@ -118,74 +155,26 @@
       <p>Designing and coding with the latest tech tools and platforms.</p>
     </div>
   </div>
-
-<h2 class="about-heading">About Us</h2>
-
-<div class="team-box">
-  <div class="team-left">
-    <div class="team-member square">
-      <img src="images/principal.jpg" alt="Principal">
-      <h4>Dr. A. Sharma</h4>
-      <p>Principal</p>
-    </div>
-    <div class="team-member square">
-      <img src="images/hod.jpg" alt="HOD">
-      <h4>Prof. R. Mehta</h4>
-      <p>Head of Department</p>
-    </div>
-    <div class="team-member square">
-      <img src="images/subhod.jpg" alt="Sub HOD">
-      <h4>Dr. S. Iyer</h4>
-      <p>Sub-HOD</p>
-    </div>
-  </div>
-
-  <div class="divider-line"></div>
-
-  <div class="team-right">
-    <div class="team-member round">
-      <img src="images/faculty1.jpg" alt="Faculty 1">
-      <h4>Ms. P. Roy</h4>
-      <p>Faculty</p>
-    </div>
-    <div class="team-member round">
-      <img src="images/faculty2.jpg" alt="Faculty 2">
-      <h4>Mr. K. Das</h4>
-      <p>Faculty</p>
-    </div>
-  </div>
-</div>
-
-
 </section>
 
 </section>
 
+<section class="gallery" id="gallery">
+  <h2 class="section-heading">Gallery</h2>
+  <div class="gallery-container">
+    <button class="scroll-btn left" onclick="scrollGallery(-1)">&#10094;</button>
+    <div class="gallery-images" id="galleryScroll">
+      <img src="images/img1.jpg" alt="Gallery Image 1">
+      <img src="images/img2.jpg" alt="Gallery Image 2">
+      <img src="images/img3.jpg" alt="Gallery Image 3">
+      <img src="images/img4.jpg" alt="Gallery Image 4">
+      <img src="images/img5.jpg" alt="Gallery Image 5">
+    </div>
+    <button class="scroll-btn right" onclick="scrollGallery(1)">&#10095;</button>
+  </div>
+</section>
 
   </header>
-
-
-  <section id="services" class="services">
-    <h2>What We Offer</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Qualified Faculty</h3>
-        <p>Experienced and dedicated faculty members with industry and research background.</p>
-      </div>
-      <div class="card">
-        <h3>Learning Resources</h3>
-        <p>Access to notes, question papers, and learning tools via student portal.</p>
-      </div>
-      <div class="card">
-        <h3>Notices & Updates</h3>
-        <p>Stay updated with the latest announcements and department events.</p>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Department Portal. All rights reserved.</p>
-  </footer>
 
 </body>
 
@@ -196,6 +185,34 @@
   toggle.addEventListener('click', () => {
     navLinks.classList.toggle('active');
   });
+
+  const scrollIndicator = document.createElement('div');
+  const scrollThumb = document.createElement('div');
+
+  scrollIndicator.classList.add('scroll-indicator');
+  scrollThumb.classList.add('scroll-thumb');
+
+  scrollIndicator.appendChild(scrollThumb);
+  document.body.appendChild(scrollIndicator);
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = scrollTop / docHeight;
+
+    scrollThumb.style.height = `${Math.max(50, scrollPercent * 100)}px`;
+    scrollThumb.style.top = `${scrollPercent * 100}%`;
+  });
+
+  function scrollGallery(direction) {
+    const container = document.getElementById("galleryScroll");
+    const scrollAmount = container.offsetWidth / 1.5;
+    container.scrollBy({
+      left: direction * scrollAmount,
+      behavior: 'smooth'
+    });
+  }
 </script>
+
 
 </html>
