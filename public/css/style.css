@@ -1,0 +1,210 @@
+/* Body background and base text */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #fff;
+  color: #222; /* Dark text */
+}
+
+/* NAVBAR */
+nav {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: rgba(0, 123, 255, 0.1); /* very light blue glass */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  z-index: 999;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+
+.logo-m {
+  color: #007BFF; /* Bright Blue */
+  font-size: 1.6rem;
+}
+
+.logo-rest {
+  color: #fafafa; /* Dark text */
+  margin-left: 0.2rem;
+}
+
+/* HERO Section */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  padding: 0 2rem;
+  background: linear-gradient(rgba(20, 11, 11, 0.6), rgba(0, 0, 0, 0.6)),
+              url("/images/bg.jpg") center/cover no-repeat;
+  color: #fdfafa;
+  animation: fadeIn 1.2s ease-out;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Animated Title */
+.animated-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #e3e4e4;
+  margin-bottom: 0.5rem;
+  animation: slideInFromLeft 1.2s ease forwards;
+  opacity: 0;
+}
+
+.animated-subtitle {
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  animation: fadeIn 2s ease forwards;
+  opacity: 0;
+  animation-delay: 1.3s;
+}
+
+/* Explore Button - Premium look */
+.explore-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #007BFF, #00C6FF);
+  color: white;
+  font-weight: 600;
+  padding: 0.85rem 2.5rem;
+  border-radius: 50px;
+  box-shadow: 0 8px 15px rgba(0, 123, 255, 0.4);
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.explore-btn:hover {
+  background: linear-gradient(135deg, #0056b3, #0099cc);
+  box-shadow: 0 12px 20px rgba(0, 86, 179, 0.6);
+  transform: translateY(-3px);
+  cursor: pointer;
+}
+
+/* Animations */
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive Hamburger Menu toggle */
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  color: #007BFF;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.4rem 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #ffcc00;
+}
+
+/* Login and Signup buttons */
+.nav-links .btn.login {
+  border: 1px solid white;
+  border-radius: 15px;
+}
+
+.nav-links .btn.signup {
+  background-color: #007BFF;
+  border-radius: 15px;
+  color: white;
+}
+
+.nav-links .btn.signup:hover {
+  background-color: #0056b3;
+}
+
+/* Hamburger Menu toggle (hidden on desktop) */
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  color: white;
+  cursor: pointer;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    flex-direction: column;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    width: 80%;
+    max-width: 300px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 0.8rem 0;
+  }
+}

@@ -1,433 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Department of Computer Science</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f0f8ff;
-  color: #002147;
-  overflow-x: hidden;
-}
-
-.loader {
-  position: fixed;
-  z-index: 9999;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #f0f8ff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: opacity 0.5s ease;
-}
-
-.loader.hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.spinner-border {
-  color: #007bff;
-  width: 3rem;
-  height: 3rem;
-}
-
-.navbar-custom {
-  background-color: #fff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 0 0 50px 50px;
-}
-
-.navbar-brand {
-  font-weight: bold;
-  font-size: 1.5rem;
-}
-
-.navbar-brand span:first-child {
-  color: #007bff;
-  font-size: 1.8rem;
-}
-
-.navbar-brand span:last-child {
-  color: #002147;
-}
-
-.nav-link {
-  color: #002147 !important;
-  margin-right: 15px;
-  font-weight: 500;
-}
-
-.nav-link:hover {
-  color: #007bff !important;
-}
-
-.navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23007bff' viewBox='0 0 30 30'%3e%3cpath stroke='%23007bff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-
-.hero-fullscreen {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(to bottom right, #f0f8ff, #dceeff);
-  text-align: center;
-  padding: 0 20px;
-}
-
-.hero-fullscreen h1 {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #007bff;
-  margin-bottom: 20px;
-  animation: fadeInDown 1s ease-in-out;
-}
-
-.hero-fullscreen p {
-  font-size: 1.2rem;
-  max-width: 700px;
-  margin-bottom: 30px;
-  animation: fadeInUp 1.2s ease-in-out;
-}
-
-.hero-buttons {
-  animation: fadeIn 1.5s ease-in-out;
-}
-
-.hero-buttons .btn {
-  margin: 0 10px;
-  padding: 10px 25px;
-  font-size: 1rem;
-  border-radius: 30px;
-}
-
-.btn-login {
-  background-color: #007bff;
-  color: white;
-  border: none;
-}
-
-.btn-signup {
-  background-color: white;
-  color: #007bff;
-  border: 2px solid #007bff;
-}
-
-.btn-login:hover,
-.btn-signup:hover {
-  opacity: 0.9;
-}
-
-
-.course-outcome {
-  font-size: 1.1rem;
-  color: #002147;
-  max-width: 800px;
-  margin: 30px auto 0;
-  padding: 20px 30px;
-  background: rgba(255, 255, 255, 0.4);
-  border-left: 6px solid #007bff;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.1);
-  backdrop-filter: blur(8px);
-}
-
-::-webkit-scrollbar {
-  width: 12px;
-}
-
-::-webkit-scrollbar-track {
-  background: #dceeff;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #007bff;
-  border-radius: 10px;
-  border: 3px solid #dceeff;
-}
-
-body {
-  cursor: none;
-}
-
-.custom-cursor {
-  width: 20px;
-  height: 20px;
-  background: #007bff;
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.08s ease;
-}
-
-/* RESPONSIVE MOBILE STYLES */
-@media (max-width: 768px) {
-  .hero-fullscreen h1 {
-    font-size: 2.2rem;
-  }
-
-  .hero-fullscreen p {
-    font-size: 1rem;
-    padding: 0 10px;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-  }
-
-  .hero-buttons .btn {
-    margin: 10px 0;
-    width: 80%;
-  }
-
-
-
-  .custom-cursor {
-    display: none;
-  }
-}
-
-
-.about-section {
-  max-width: 1200px;
-  margin: 60px auto;
-  padding: 50px 20px;
-  background: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-}
-
-.about-section h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  color: #007bff;
-  margin-bottom: 30px;
-}
-
-.about-content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-
-.about-text {
-  flex: 1;
-  min-width: 300px;
-}
-
-.about-text p {
-  text-align: justify;
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: #333;
-}
-
-.about-media {
-  flex: 1;
-  min-width: 300px;
-}
-
-.about-media video {
-  width: 100%;
-  border: 4px solid #007bff;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
-/* Centered Image Gallery */
-.image-gallery {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin: 30px 0;
-  flex-wrap: wrap;
-}
-
-.image-item {
-  text-align: center;
-}
-
-.image-item img {
-  width: 180px;
-  height: auto;
-  border: 3px solid #007bff;
-  border-radius: 10px;
-  transition: transform 0.3s ease;
-}
-
-.image-item img:hover {
-  transform: scale(1.08);
-}
-
-.image-item p {
-  margin-top: 8px;
-  font-weight: 500;
-  color: #002147;
-}
-
-/* Course Outcome */
-.course-outcome {
-  margin-top: 30px;
-  background: rgba(0, 123, 255, 0.05);
-  padding: 30px 20px;
-  border-radius: 15px;
-  border-left: 5px solid #007bff;
-}
-
-.course-outcome h3 {
-  font-size: 1.8rem;
-  color: #007bff;
-  margin-bottom: 20px;
-}
-
-.course-outcome .message {
-  background: #eaf4ff;
-  border: 1px solid #007bff;
-  padding: 15px 20px;
-  border-radius: 10px;
-  margin-bottom: 15px;
-  font-size: 1.05rem;
-  color: #002147;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .about-content {
-    flex-direction: column;
-  }
-
-  .about-section h2 {
-    font-size: 2rem;
-  }
-
-  .image-gallery {
-    justify-content: center;
-    gap: 15px;
-  }
-
-  .image-item img {
-    width: 120px;
-  }
-}
-
-
-
-
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Department Portal</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="custom-cursor"></div>
 
-  <div class="loader" id="loader">
-    <div class="spinner-border" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
+  <header>
+<nav>
+  <div class="logo">
+    <span class="logo-m">M</span><span class="logo-rest">ultihub</span>
   </div>
+  <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a class="btn login" href="#">Login</a></li>
+    <li><a class="btn signup" href="#">Signup</a></li>
+  </ul>
+</nav>
 
-  <nav class="navbar navbar-expand-lg navbar-custom fixed-top px-4 py-3">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#"><span>M</span><span>ultiHub</span></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#gallery">Gallery</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact</a>
-          </li>
-        </ul>
+    <section class="hero">
+<div class="hero">
+  <h1 class="animated-title">Welcome to the Department of <br>Multimedia & Web Technology</h1>
+  <p class="animated-subtitle">Empowering students through technology and innovation.</p>
+  <a href="#about" class="btn explore-btn">Explore</a>
+</div>
+
+    </section>
+  </header>
+
+  <section id="about" class="about">
+    <h2>About the Department</h2>
+    <p>
+      Our department is committed to excellence in teaching, research, and service. 
+      We prepare students for careers in software development, data science, AI, and more.
+    </p>
+  </section>
+
+  <section id="services" class="services">
+    <h2>What We Offer</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Qualified Faculty</h3>
+        <p>Experienced and dedicated faculty members with industry and research background.</p>
       </div>
-    </div>
-  </nav>
-
-  <section class="hero-fullscreen">
-    <h1>Welcome to the Department of Computer Science</h1>
-    <p>Empowering students with knowledge and skills to shape the future through innovation, research, and technology.</p>
-    <div class="hero-buttons">
-      <a href="/login" class="btn btn-login">Login</a>
-      <a href="/signup" class="btn btn-signup">Sign Up</a>
+      <div class="card">
+        <h3>Learning Resources</h3>
+        <p>Access to notes, question papers, and learning tools via student portal.</p>
+      </div>
+      <div class="card">
+        <h3>Notices & Updates</h3>
+        <p>Stay updated with the latest announcements and department events.</p>
+      </div>
     </div>
   </section>
 
-<section class="about-section">
-  <h2>About Our Learning Platform</h2>
-  <div class="about-content">
-    <div class="about-text">
-      <p>
-        Welcome to our advanced learning platform designed to enhance your skills and knowledge with ease.
-        Through interactive sessions, engaging content, and real-world projects, we aim to provide an immersive 
-        educational experience for all learners. Our courses are tailored to help you achieve professional 
-        excellence and personal growth. excellence and personal growth. excellence and personal growth. excellence and personal growth. excellence and personal growth. excellence and personal growth. excellence and personal growth. excellence and personal growth. excellence and personal growth. excellence and personal growth. excellence and personal growth. excellence and personal growth.
-      </p>
-    </div>
-    <div class="about-media">
-      <video controls>
-        <source src="uploads/your-video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  </div>
+  <footer>
+    <p>&copy; 2025 Department Portal. All rights reserved.</p>
+  </footer>
 
-  <div class="image-gallery">
-    <div class="image-item">
-      <img src="uploads/image1.jpg" alt="Resource 1">
-      <p>Resource 1</p>
-    </div>
-    <div class="image-item">
-      <img src="uploads/image2.jpg" alt="Resource 2">
-      <p>Resource 2</p>
-    </div>
-    <div class="image-item">
-      <img src="/images/Maam.png" alt="Resource 3">
-      <p>Resource 3</p>
-    </div>
-  </div>
-
-  <div class="course-outcome">
-    <h3>Course Outcomes</h3>
-    <div class="message">✔️ Master new skills and tools effectively.</div>
-    <div class="message">✔️ Build real-world projects and enhance your portfolio.</div>
-    <div class="message">✔️ Become industry-ready with expert guidance.</div>
-  </div>
-</section>
-
-
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    window.addEventListener("load", function() {
-      document.getElementById("loader").classList.add("hidden");
-    });
-
-     const cursor = document.querySelector('.custom-cursor');
-  document.addEventListener('mousemove', e => {
-    cursor.style.left = `${e.clientX}px`;
-    cursor.style.top = `${e.clientY}px`;
-  });
-  </script>
 </body>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  toggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script>
+
 </html>
