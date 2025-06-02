@@ -9,6 +9,35 @@ body {
   background-color: #f9f9f9;
 }
 
+/* Custom Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 4px;
+  border: 2px solid rgba(0, 123, 255, 0.8);
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.8);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  border-color: rgba(0, 123, 255, 1);
+  box-shadow: 0 0 10px rgba(0, 123, 255, 1);
+}
+
+/* Firefox support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 123, 255, 0.8) transparent;
+}
+
+
+
 /* Hide scrollbar but still allow scrolling */
 body {
   overflow-y: scroll;
@@ -152,7 +181,7 @@ nav ul li a:hover {
 /* Hero Section */
 .hero {
   position: relative;
-  background: url('images/hero-bg.jpg') no-repeat center center/cover;
+  background: url('/images/hero-bg.jpg') no-repeat center center/cover;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -279,7 +308,7 @@ nav ul li a:hover {
 }
 
 .section-title span {
-  color: #ffcc00;
+  color: #0cb56c;
 }
 
 .about-flex {
@@ -351,7 +380,7 @@ html {
 
 .outcome-box i {
   font-size: 2.5rem;
-  color: #ffcc00;
+  color: #22dea2;
   margin-bottom: 15px;
 }
 
@@ -377,7 +406,8 @@ html {
   transform: translateY(0);
 }
 
-/* Responsive */
+/* -------------------------------------Responsive -------------------------------------------*/
+
 @media (max-width: 768px) {
   .about-flex {
     flex-direction: column;
@@ -396,7 +426,7 @@ html {
 .features-heading {
   font-size: 2.2rem;
   margin-bottom: 40px;
-  color: #003366; /* Dark Blue */
+  color: #003366; 
 }
 
 .features-grid {
@@ -405,7 +435,7 @@ html {
   gap: 25px;
 }
 
-/* Make it responsive for tablets and mobiles */
+/* ---------------------Responsive for tablets and mobiles------------------------------------ */
 @media (max-width: 1024px) {
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -449,14 +479,15 @@ html {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
-/* Animation on scroll */
+
 .feature-box.active {
   opacity: 1;
   transform: translateY(0);
   transition: all 0.6s ease-out;
 }
 
-/* Gallery */
+/*--------------------------------------------- Gallery-Section------------------------------------------------------- */
+
 .gallery-grid {
   display: flex;
   flex-wrap: wrap;
@@ -673,7 +704,7 @@ html {
 }
 
 .gallery-item.active {
-  box-shadow: 0 0 15px 3px #ffcc00;
+  box-shadow: 0 0 15px 3px #13e0b0;
   transform: scale(1.05);
 }
 
@@ -881,7 +912,7 @@ form#contactForm button:hover {
 }
 
 .social-icons a:hover {
-  background-color: #ffcc00;
+  background-color: #18bd73;
   color: #003366;
 }
 
@@ -932,7 +963,7 @@ form#contactForm button:hover {
   margin-bottom: 10px;
 }
 .footer-left span {
-  color: #ffcc00;
+  color: #12a773;
 }
 .footer-center ul {
   list-style: none;
@@ -947,7 +978,7 @@ form#contactForm button:hover {
   transition: color 0.3s ease;
 }
 .footer-center ul li a:hover {
-  color: #ffcc00;
+  color: #18ae86;
 }
 .footer-right p {
   margin: 6px 0;
