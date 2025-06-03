@@ -1,4 +1,3 @@
-/* Reset and Base */
 * {
   margin: 0;
   padding: 0;
@@ -9,7 +8,8 @@ body {
   background-color: #f9f9f9;
 }
 
-/* Custom Scrollbar Styling */
+/*---------------------------- Custom Scrollbar ------------------------------------- */
+
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -30,24 +30,22 @@ body {
   box-shadow: 0 0 10px rgba(0, 123, 255, 1);
 }
 
-/* Firefox support */
+
 * {
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 123, 255, 0.8) transparent;
 }
 
 
-
-/* Hide scrollbar but still allow scrolling */
 body {
   overflow-y: scroll;
   scrollbar-width: thin;
-  scrollbar-color: #007BFF #000; /* thumb color, track color */
+  scrollbar-color: #007BFF #000; 
 }
 .section-divider {
   width: 800px;
   height: 3px;
-  background: #007BFF; /* Choose a color that fits your theme */
+  background: #007BFF; 
   margin: 2rem auto;
   border: none;
   border-radius: 2px;
@@ -55,14 +53,14 @@ body {
 
 
 
-/* Container */
+
 .container {
   max-width: 1200px;
   margin: auto;
   padding: 0 20px;
 }
 
-/* Preloader */
+
 #preloader {
   background-color: #003366;
   position: fixed;
@@ -86,7 +84,7 @@ body {
   100% { transform: rotate(360deg); }
 }
 
-/* Hide content initially */
+
 .hidden {
   display: none;
 }
@@ -98,7 +96,7 @@ body {
   100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Header and Nav */
+/*----------------------- Header and Nav----------------------- */
 header {
   background-color: #003366;
   padding: 12px 0;
@@ -127,7 +125,7 @@ header {
   margin-left: 2px;
 }
 
-/* Nav Links */
+/* ---------------------------Nav Links--------------------- */
 nav ul {
   list-style: none;
   display: flex;
@@ -146,7 +144,7 @@ nav ul li a:hover {
   border-radius: 6px;
 }
 
-/* Buttons */
+/* -----------------------------Buttons -------------------------------------*/
 .btn {
   border-radius: 20px;
   padding: 6px 16px;
@@ -168,17 +166,17 @@ nav ul li a:hover {
   background-color: #24df98;
 }
 
-/* Hamburger Menu */
+
 .hamburger {
   display: none;
   font-size: 1.8rem;
   color: white;
   cursor: pointer;
-  margin-left: auto; /* pushes it to the right */
+  margin-left: auto; 
 }
 
 
-/* Hero Section */
+/* ----------------------------Hero Section ----------------------------*/
 .hero {
   position: relative;
   background: url('/images/hero-bg.jpg') no-repeat center center/cover;
@@ -195,7 +193,7 @@ nav ul li a:hover {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.6); /* black shade */
+  background: rgba(0, 0, 0, 0.6); 
   z-index: 1;
 }
 
@@ -258,7 +256,7 @@ nav ul li a:hover {
   }
 }
 
-/* Responsive */
+/* ---------------------------------------Responsive ----------------------------------------*/
 @media (max-width: 768px) {
   nav ul {
     flex-direction: column;
@@ -436,6 +434,7 @@ html {
 }
 
 /* ---------------------Responsive for tablets and mobiles------------------------------------ */
+
 @media (max-width: 1024px) {
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -563,21 +562,21 @@ html {
 
 .enhancement-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  grid-template-columns: repeat(3, 1fr); 
   gap: 30px;
-  max-width: 900px;  /* slightly narrower for 3 cards */
+  max-width: 900px;  
   margin: 0 auto;
 }
 
 @media (max-width: 900px) {
   .enhancement-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+    grid-template-columns: repeat(2, 1fr); 
   }
 }
 
 @media (max-width: 600px) {
   .enhancement-grid {
-    grid-template-columns: 1fr; /* 1 column on mobile */
+    grid-template-columns: 1fr; 
   }
 }
 
@@ -651,12 +650,14 @@ html {
   color: #777;
 }
 
-/* Responsive tweak */
+
 @media (max-width: 600px) {
   .faculty-member {
     width: 80%;
   }
 }
+
+
 .gallery-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -664,9 +665,9 @@ html {
 
 .gallery-wrapper {
   display: flex;
-  gap: 20px;
+  gap: 30px;
   flex-wrap: nowrap;
-  height: 520px; /* Fix height so left container can scroll */
+  height: 520px; 
 }
 
 .gallery-thumbnails {
@@ -676,8 +677,8 @@ html {
   flex: 1 1 150px;
   max-width: 200px;
   overflow-y: auto;
-  max-height: 520px; /* fixed height for vertical scroll */
-  padding-right: 5px; /* prevent scrollbar overlap */
+  max-height: 520px; 
+  padding-right: 5px; 
 }
 
 .gallery-item {
@@ -748,7 +749,7 @@ html {
   border-radius: 8px;
 }
 
-/* Responsive */
+/*---------------------------- Responsive ------------------*/
 @media (max-width: 900px) {
   .gallery-wrapper {
     flex-direction: column;
@@ -774,7 +775,7 @@ html {
 
 
 /* Contact Form */
-/* Contact Section Container */
+
 .contact-container {
   display: flex;
   flex-wrap: wrap;
@@ -785,7 +786,6 @@ html {
   padding: 40px 20px;
 }
 
-/* Contact Box - Form and Location */
 .contact-box {
   flex: 1 1 400px;
   max-width: 480px;
@@ -796,14 +796,14 @@ html {
   font-family: 'Poppins', sans-serif;
 }
 
-/* Form Styling */
+
 form#contactForm {
   display: flex;
   flex-direction: column;
   gap: 18px;
 }
 
-/* Smaller, attractive inputs for Name, Email, Phone */
+
 form#contactForm input[type="text"],
 form#contactForm input[type="email"],
 form#contactForm input[type="tel"] {
@@ -817,10 +817,10 @@ form#contactForm input[type="tel"] {
   font-family: 'Poppins', sans-serif;
 }
 
-/* Keep message textarea big */
+
 form#contactForm textarea {
   width: 100%;
-  min-height: 100px; /* or keep your previous size */
+  min-height: 100px; 
   padding: 12px 15px;
   font-size: 1rem;
   border-radius: 10px;
@@ -830,7 +830,7 @@ form#contactForm textarea {
   transition: border-color 0.3s ease;
 }
 
-/* Focus styles */
+
 form#contactForm input[type="text"]:focus,
 form#contactForm input[type="email"]:focus,
 form#contactForm input[type="tel"]:focus {
@@ -846,7 +846,7 @@ form#contactForm textarea:focus {
 }
 
 
-/* Button */
+
 form#contactForm button {
   background-color: #043157;
   color: #fafafa;
@@ -865,7 +865,7 @@ form#contactForm button:hover {
   box-shadow: 0 6px 16px rgba(32, 21, 115, 0.6);
 }
 
-/* Success message */
+
 #formMsg {
   font-weight: 600;
   color: #24df98;
@@ -873,12 +873,14 @@ form#contactForm button:hover {
   margin-top: 6px;
 }
 
-/* Location Info */
 .location-info h3 {
   color: #003366;
   margin-bottom: 12px;
   font-weight: 700;
   font-family: 'Poppins', sans-serif;
+}
+.contact-section {
+  height: calc(var(--vh, 1vh) * 100);
 }
 
 .location-info p {
@@ -889,7 +891,7 @@ form#contactForm button:hover {
   font-family: 'Poppins', sans-serif;
 }
 
-/* Social Icons Container */
+
 .social-icons {
   margin-top: 30px;
   display: flex;
@@ -897,7 +899,7 @@ form#contactForm button:hover {
   gap: 25px;
 }
 
-/* Social Icon Buttons */
+
 .social-icons a {
   background-color: #003366;
   color: white;
@@ -916,7 +918,7 @@ form#contactForm button:hover {
   color: #003366;
 }
 
-/* Section Title */
+
 .section-title {
   text-align: center;
   font-family: 'Poppins', sans-serif;
@@ -926,7 +928,7 @@ form#contactForm button:hover {
   margin-bottom: 40px;
 }
 
-/* Responsive Adjustments */
+
 @media (max-width: 900px) {
   .contact-container {
     flex-direction: column;
@@ -937,7 +939,12 @@ form#contactForm button:hover {
     max-width: 100%;
     padding: 25px 20px;
   }
+    .location-box iframe {
+    height: 250px;
+  }
+
 }
+
 
 /* Footer */
 .footer {
