@@ -52,3 +52,10 @@ const contactRoutes = require('./routes/messages');
 app.use('/', contactRoutes);
 const messageRoutes = require('./routes/messages'); // or contact
 app.use('/', messageRoutes);
+// Route for /guide
+
+const guideRoute = require('./routes/guide');
+app.use('/guide', guideRoute);
+app.get('/guide', (req, res) => {
+  res.render('guide'); // guide.ejs should be in /views
+});
