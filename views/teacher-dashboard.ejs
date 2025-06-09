@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>Teacher Dashboard</title>
@@ -122,8 +123,15 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @media (max-width: 600px) {
@@ -150,17 +158,21 @@
         gap: 1rem;
       }
 
+
       .logout-btn {
         width: 100%;
       }
     }
   </style>
 </head>
+
 <body>
   <div class="glass-container">
     <header>Welcome, <%= user.name %> (Teacher)</header>
     <div class="info">
-      <p><strong>Email:</strong> <%= user.email %></p>
+      <p><strong>Email:</strong>
+        <%= user.email %>
+      </p>
     </div>
 
     <blockquote>
@@ -170,6 +182,7 @@
     <div class="button-group">
       <a href="/upload-notice" class="btn notice">📢 Upload Notice</a>
       <a href="/upload-note" class="btn note">📚 Upload Note</a>
+      <a href="/guide" class="btn tech" style="background-color: #0d6efd; color: white;">📰 Tech Updates</a>
     </div>
 
     <a href="/" class="logout-btn">Logout</a>
