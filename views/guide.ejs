@@ -1,1001 +1,1255 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Premium Developer Guide</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Premium Developer Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #0a2e73, #00aaff);
-      color: #222;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
 
-    
-    .header {
-      padding: 4rem 1rem 3rem;
-      text-align: center;
-      color: #e0f2ff;
-      text-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
-      background: rgba(0, 40, 120, 0.75);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      border-radius: 0 0 50% 50% / 20%;
-      margin-bottom: 3rem;
-      overflow: hidden;
-      position: relative;
-    }
-    .header h1 {
-      font-weight: 800;
-      font-size: 3.5rem;
-      margin-bottom: 0.5rem;
-      letter-spacing: 1.5px;
-      color: #a3d8ff;
-      animation: slideInLeft 1s ease forwards;
-      opacity: 0;
-    }
-    .header p {
-      font-size: 1.5rem;
-      font-weight: 500;
-      color: #c7e8ff;
-      opacity: 0;
-      animation: slideInRight 1s ease 0.6s forwards;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    @keyframes slideInLeft {
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-      from {
-        opacity: 0;
-        transform: translateX(-40px);
-      }
-    }
-    @keyframes slideInRight {
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-      from {
-        opacity: 0;
-        transform: translateX(40px);
-      }
-    }
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-    /* Tab Navigation */
-    .nav-tabs {
-      border-bottom: none;
-      justify-content: center;
-      margin-bottom: 2rem;
-    }
-    .nav-tabs .nav-link {
-      font-weight: 600;
-      color: #e0f2ff;
-      transition: color 0.3s ease;
-      border: none;
-      border-radius: 50px;
-      padding: 0.8rem 2rem;
-      background: rgba(255, 255, 255, 0.15);
-      margin: 0 0.5rem;
-      font-size: 1.1rem;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    }
-    .nav-tabs .nav-link.active {
-      color: #004d99;
-      background: #c7e8ff;
-      font-weight: 700;
-      box-shadow: 0 8px 25px rgba(0, 77, 153, 0.4);
-    }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0a2e73, #00aaff);
+            color: #222;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
 
-    /* Cards and content */
-    .card {
-      border-radius: 1rem;
-      box-shadow: 0 10px 35px rgba(0, 85, 170, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-      background: #f0faff;
-      color: #004d99;
-    }
-    .card:hover {
-      transform: scale(1.06);
-      box-shadow: 0 18px 50px rgba(0, 85, 170, 0.35);
-    }
 
-    /* Buttons */
-    .btn-primary, .btn-success, .btn-warning, .btn-outline-dark, .btn-outline-primary {
-      border-radius: 50px;
-      padding: 0.55rem 1.6rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-    .btn-primary {
-      background-color: #0077cc;
-      border-color: #0077cc;
-      color: white;
-    }
-    .btn-primary:hover {
-      background: #005fa3;
-      border-color: #005fa3;
-      box-shadow: 0 5px 18px rgba(0, 95, 163, 0.7);
-    }
-    .btn-success {
-      background-color: #009944;
-      border-color: #009944;
-      color: white;
-    }
-    .btn-success:hover {
-      background: #007733;
-      border-color: #007733;
-      box-shadow: 0 5px 18px rgba(0, 119, 51, 0.7);
-    }
-    .btn-warning {
-      background-color: #ffaa00;
-      border-color: #ffaa00;
-      color: #004d00;
-    }
-    .btn-warning:hover {
-      background: #cc8800;
-      border-color: #cc8800;
-      box-shadow: 0 5px 18px rgba(204, 136, 0, 0.7);
-    }
-    .btn-outline-primary {
-      color: #0077cc;
-      border-color: #0077cc;
-    }
-    .btn-outline-primary:hover {
-      background: #0077cc;
-      color: white;
-    }
+        .header {
+            padding: 4rem 1rem 3rem;
+            text-align: center;
+            color: #e0f2ff;
+            text-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
+            background: rgba(0, 40, 120, 0.75);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            border-radius: 0 0 50% 50% / 20%;
+            margin-bottom: 3rem;
+            overflow: hidden;
+            position: relative;
+        }
 
-    /* Section Titles */
-    .section-title {
-      font-weight: 700;
-      color: black;
-      margin-bottom: 1.5rem;
-      text-align: center;
-      font-size: 2.2rem;
-      text-shadow: 1px 1px 3px rgba(200, 200, 200, 0.4);
-    }
+        .header h1 {
+            font-weight: 800;
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1.5px;
+            color: #a3d8ff;
+            animation: slideInLeft 1s ease forwards;
+            opacity: 0;
+        }
 
-    /* Language Buttons */
-    .language-btn-group .btn {
-      font-weight: 600;
-      border-radius: 50px;
-      padding: 0.55rem 1.5rem;
-      transition: background-color 0.4s ease;
-    }
-    .language-btn-group .btn.active {
-      background: #005fa3;
-      color: white;
-      box-shadow: 0 8px 25px rgba(0, 95, 163, 0.7);
-    }
+        .header p {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #c7e8ff;
+            opacity: 0;
+            animation: slideInRight 1s ease 0.6s forwards;
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
-    /* Content Sections */
-    .content-section {
-      background: #e6f2ff;
-      border-radius: 1rem;
-      padding: 2.5rem;
-      box-shadow: 0 10px 40px rgba(0, 85, 170, 0.15);
-      margin-bottom: 3rem;
-      min-height: 320px;
-      color: #004d99;
-      animation-duration: 0.8s;
-      animation-fill-mode: both;
-    }
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
 
-    /* External links */
-    a.external-link {
-      color: #005fa3;
-      font-weight: 600;
-      text-decoration: none;
-    }
-    a.external-link:hover {
-      text-decoration: underline;
-    }
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+        }
 
-    /* List styling */
-    ul.guide-list {
-      list-style: none;
-      padding-left: 0;
-    }
-    ul.guide-list li {
-      position: relative;
-      margin-bottom: 1.15rem;
-      padding-left: 30px;
-      font-size: 1.1rem;
-      line-height: 1.5;
-    }
-    ul.guide-list li::before {
-      content: "✔";
-      position: absolute;
-      left: 0;
-      top: 2px;
-      color: #0077cc;
-      font-weight: 700;
-      font-size: 1.25rem;
-    }
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
 
-    /* Footer */
-    footer {
-      background: rgba(0,0,0,0.15);
-      color: #004d99;
-      text-align: center;
-      padding: 1rem 0;
-      margin-top: auto;
-      font-weight: 600;
-      font-size: 0.95rem;
-      letter-spacing: 0.8px;
-    }
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+        }
 
-    /* Responsive tweaks */
-    @media (max-width: 767px) {
-      .header h1 {
-        font-size: 2.6rem;
-      }
-      .header p {
-        font-size: 1.1rem;
-      }
-      .nav-tabs .nav-link {
-        padding: 0.5rem 1rem;
-        font-size: 0.95rem;
-        margin: 0 0.25rem;
-      }
-    }
-      /* Hide default scrollbar on Webkit browsers */
-      html {
-  scroll-behavior: smooth;
-}
+        /* Tab Navigation */
+        .nav-tabs {
+            border-bottom: none;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
 
-  body::-webkit-scrollbar {
-    width: 10px;
-  }
+        .nav-tabs .nav-link {
+            font-weight: 600;
+            color: #e0f2ff;
+            transition: color 0.3s ease;
+            border: none;
+            border-radius: 50px;
+            padding: 0.8rem 2rem;
+            background: rgba(255, 255, 255, 0.15);
+            margin: 0 0.5rem;
+            font-size: 1.1rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
 
-  body::-webkit-scrollbar-track {
-    background: #0a0a0a;
-  }
+        .nav-tabs .nav-link.active {
+            color: #004d99;
+            background: #c7e8ff;
+            font-weight: 700;
+            box-shadow: 0 8px 25px rgba(0, 77, 153, 0.4);
+        }
 
-  body::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #00f0ff, #004cff);
-    border-radius: 10px;
-    box-shadow: 0 0 10px #00f0ff, 0 0 20px #004cff;
-  }
+        /* Cards and content */
+        .card {
+            border-radius: 1rem;
+            box-shadow: 0 10px 35px rgba(0, 85, 170, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            background: #f0faff;
+            color: #004d99;
+        }
 
-  /* Firefox scrollbar styling */
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: #00f0ff #0a0a0a;
-  }
-  </style>
+        .card:hover {
+            transform: scale(1.06);
+            box-shadow: 0 18px 50px rgba(0, 85, 170, 0.35);
+        }
+
+        /* Buttons */
+        .btn-primary,
+        .btn-success,
+        .btn-warning,
+        .btn-outline-dark,
+        .btn-outline-primary {
+            border-radius: 50px;
+            padding: 0.55rem 1.6rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #0077cc;
+            border-color: #0077cc;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #005fa3;
+            border-color: #005fa3;
+            box-shadow: 0 5px 18px rgba(0, 95, 163, 0.7);
+        }
+
+        .btn-success {
+            background-color: #009944;
+            border-color: #009944;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #007733;
+            border-color: #007733;
+            box-shadow: 0 5px 18px rgba(0, 119, 51, 0.7);
+        }
+
+        .btn-warning {
+            background-color: #ffaa00;
+            border-color: #ffaa00;
+            color: #004d00;
+        }
+
+        .btn-warning:hover {
+            background: #cc8800;
+            border-color: #cc8800;
+            box-shadow: 0 5px 18px rgba(204, 136, 0, 0.7);
+        }
+
+        .btn-outline-primary {
+            color: #0077cc;
+            border-color: #0077cc;
+        }
+
+        .btn-outline-primary:hover {
+            background: #0077cc;
+            color: white;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-weight: 700;
+            color: black;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 2.2rem;
+            text-shadow: 1px 1px 3px rgba(200, 200, 200, 0.4);
+        }
+
+        /* Language Buttons */
+        .language-btn-group .btn {
+            font-weight: 600;
+            border-radius: 50px;
+            padding: 0.55rem 1.5rem;
+            transition: background-color 0.4s ease;
+        }
+
+        .language-btn-group .btn.active {
+            background: #005fa3;
+            color: white;
+            box-shadow: 0 8px 25px rgba(0, 95, 163, 0.7);
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: #e6f2ff;
+            border-radius: 1rem;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0, 85, 170, 0.15);
+            margin-bottom: 3rem;
+            min-height: 320px;
+            color: #004d99;
+            animation-duration: 0.8s;
+            animation-fill-mode: both;
+        }
+
+        /* External links */
+        a.external-link {
+            color: #005fa3;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        a.external-link:hover {
+            text-decoration: underline;
+        }
+
+        /* List styling */
+        ul.guide-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul.guide-list li {
+            position: relative;
+            margin-bottom: 1.15rem;
+            padding-left: 30px;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        ul.guide-list li::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: #0077cc;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.15);
+            color: #004d99;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: auto;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.8px;
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 767px) {
+            .header h1 {
+                font-size: 2.6rem;
+            }
+
+            .header p {
+                font-size: 1.1rem;
+            }
+
+            .nav-tabs .nav-link {
+                padding: 0.5rem 1rem;
+                font-size: 0.95rem;
+                margin: 0 0.25rem;
+            }
+        }
+            .content-section {
+                padding: 1.5rem;
+                background: #fff;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .section-title {
+                font-weight: 700;
+                margin-bottom: 1rem;
+            }
+
+            .guide-list li {
+                margin-bottom: 0.5rem;
+            }
+
+            .btn-group.language-btn-group .btn {
+                min-width: 120px;
+            }
+ 
+        /* Hide default scrollbar on Webkit browsers */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        body::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #00f0ff, #004cff);
+            border-radius: 10px;
+            box-shadow: 0 0 10px #00f0ff, 0 0 20px #004cff;
+        }
+
+        /* Firefox scrollbar styling */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #00f0ff #0a0a0a;
+        }
+    </style>
+
 </head>
+
 <body>
 
-  <header class="header animate__animated animate__fadeInDown">
-    <div class="text-center py-3 animate__animated animate__fadeInDown">
-  <h1 style="font-weight: bold; font-size: 2.5rem;">
-    <span style="color: #68c6ec;">M</span><span style="color: white;">ultiHub</span>
-  </h1>
-</div>
-
-    <h1>Code. Conquer. Connect.</h1>
-    <p>Master coding challenges, ace interviews, and build a professional brand that stands out.</p>
-  </header>
-
-  <main class="container mb-5">
-
-
-<!-- Main Tabs -->
-<ul class="nav nav-tabs justify-content-center flex-wrap" role="tablist" aria-label="Main guide sections">
-  <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="practice-tab" data-bs-toggle="tab" type="button" role="tab" aria-controls="practice" aria-selected="true" onclick="showMainSection('practice')">
-      Practice Coding
-    </button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="interview-tab" data-bs-toggle="tab" type="button" role="tab" aria-controls="interview" aria-selected="false" onclick="showMainSection('interview')">
-      Interview Tips
-    </button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" type="button" role="tab" aria-controls="profile" aria-selected="false" onclick="showMainSection('profile')">
-      Professional Profiles
-    </button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="technews-tab" data-bs-toggle="tab" type="button" role="tab" aria-controls="technews" aria-selected="false" onclick="showMainSection('technews')">
-      Tech News
-    </button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="freelancing-tab" data-bs-toggle="tab" type="button" role="tab" aria-controls="freelancing" aria-selected="false" onclick="showMainSection('freelancing')">
-      Freelancing
-    </button>
-  </li>
-</ul>
-
-<!-- Roadmap & Passion Buttons (Centered Below Tabs) -->
-
-<div class="mt-3 mb-5 d-flex justify-content-center gap-3">
-  <button class="btn btn-primary text-white px-4" onclick="showMainSection('roadmap')">
-    📍 Roadmap
-  </button>
-  <button class="btn btn-success text-white px-4" onclick="showMainSection('passion')">
-    ❤️ Passion
-  </button>
-  <button class="btn btn-warning text-white px-4" onclick="showMainSection('certifications')">
-    🎓 Certifications
-  </button>
-</div>
-
-
-
-    <!-- Practice Coding Section -->
-<section id="practice" class="content-section animate__animated">
-  <h2 class="section-title">Practice Coding - Select Language</h2>
-  <div class="btn-group language-btn-group mb-4" role="group" aria-label="Select coding language">
-    <button type="button" id="btn-python" class="btn btn-outline-primary active" onclick="showLanguageSection('python')">Python</button>
-    <button type="button" id="btn-cpp" class="btn btn-outline-primary" onclick="showLanguageSection('cpp')">C++</button>
-    <button type="button" id="btn-c" class="btn btn-outline-primary" onclick="showLanguageSection('c')">C</button>
-    <button type="button" id="btn-extra" class="btn btn-outline-primary" onclick="showLanguageSection('extra')">More</button>
-  </div>
-
-  <!-- Python -->
-  <div id="python" class="language-section">
-    <div class="row g-4">
-      <div class="col-md-6">
-        <div class="card p-4">
-          <h5>LeetCode Python</h5>
-          <p>Practice Python problems on LeetCode with easy to hard challenges.</p>
-          <a href="https://leetcode.com/problemset/all/?difficulty=Easy&topicSlugs=python" target="_blank" rel="noopener" class="btn btn-primary">Start Practicing</a>
+    <header class="header animate__animated animate__fadeInDown">
+        <div class="text-center py-3 animate__animated animate__fadeInDown">
+            <h1 style="font-weight: bold; font-size: 2.5rem;">
+                <span style="color: #68c6ec;">M</span><span style="color: white;">ultiHub</span>
+            </h1>
         </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card p-4">
-          <h5>HackerRank Python</h5>
-          <p>Sharpen your Python skills with coding challenges on HackerRank.</p>
-          <a href="https://www.hackerrank.com/domains/python" target="_blank" rel="noopener" class="btn btn-success">Try Challenges</a>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- C++ -->
-  <div id="cpp" class="language-section d-none">
-    <div class="row g-4">
-      <div class="col-md-6">
-        <div class="card p-4">
-          <h5>LeetCode C++</h5>
-          <p>Enhance your C++ skills with curated problems on LeetCode.</p>
-          <a href="https://leetcode.com/problemset/all/?difficulty=Easy&topicSlugs=cplusplus" target="_blank" rel="noopener" class="btn btn-primary">Start Practicing</a>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card p-4">
-          <h5>Codeforces C++</h5>
-          <p>Participate in contests and solve problems using C++ on Codeforces.</p>
-          <a href="https://codeforces.com/problemset?tags=implementation" target="_blank" rel="noopener" class="btn btn-success">Join Contests</a>
-        </div>
-      </div>
-    </div>
-  </div>
+        <h1>Code. Conquer. Connect.</h1>
+        <p>Master coding challenges, ace interviews, and build a professional brand that stands out.</p>
+    </header>
 
-  <!-- C -->
-  <div id="c" class="language-section d-none">
-    <div class="row g-4">
-      <div class="col-md-6">
-        <div class="card p-4">
-          <h5>GeeksforGeeks C</h5>
-          <p>Learn and practice C programming with problems and tutorials.</p>
-          <a href="https://practice.geeksforgeeks.org/explore/?category%5B%5D=C" target="_blank" rel="noopener" class="btn btn-primary">Explore Problems</a>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card p-4">
-          <h5>HackerRank C</h5>
-          <p>Sharpen your C skills with challenges from HackerRank.</p>
-          <a href="https://www.hackerrank.com/domains/c" target="_blank" rel="noopener" class="btn btn-success">Try Challenges</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Extra Platforms -->
-  <div id="extra" class="language-section d-none">
-    <div class="row g-4">
-      <div class="col-md-6">
-        <div class="card p-4">
-          <h5>Exercism</h5>
-          <p>Practice 60+ languages with mentor-supported exercises.</p>
-          <a href="https://exercism.org/" target="_blank" rel="noopener" class="btn btn-info">Go to Exercism</a>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card p-4">
-          <h5>Codewars</h5>
-          <p>Solve kata (challenges) in Python, C, C++, and more with rankings.</p>
-          <a href="https://www.codewars.com/" target="_blank" rel="noopener" class="btn btn-danger">Go to Codewars</a>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card p-4">
-          <h5>Edabit</h5>
-          <p>Beginner-friendly bite-sized coding challenges in many languages.</p>
-          <a href="https://edabit.com/" target="_blank" rel="noopener" class="btn btn-warning">Visit Edabit</a>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card p-4">
-          <h5>CS50 Lab</h5>
-          <p>Interactive C coding problems from Harvard’s CS50 course.</p>
-          <a href="https://lab.cs50.io/" target="_blank" rel="noopener" class="btn btn-primary">Try CS50 Lab</a>
-        </div>
-      </div>
-
-      
-    </div>
-  </div>
-</section>
+    <main class="container mb-5">
 
 
-<!-- Interview Tips Section -->
-<section id="interview" class="content-section d-none">
-  <h2 class="section-title text-center mb-4">Interview Preparation Guide</h2>
-
-  <ul class="guide-list">
-    <li>Research the company and understand its products & culture.</li>
-    <li>Practice common data structures and algorithms questions.</li>
-    <li>Prepare answers for behavioral questions using the STAR method.</li>
-    <li>Mock interviews with peers or platforms like <a href="https://www.pramp.com" target="_blank" rel="noopener" class="external-link">Pramp</a>.</li>
-    <li>Prepare thoughtful questions to ask the interviewer.</li>
-    <li>Dress professionally and be punctual for your interview.</li>
-    <li>Follow up with a thank-you email post-interview.</li>
-  </ul>
-
-  <div class="row mt-4 g-4">
-    <div class="col-md-6">
-      <div class="card p-4">
-        <h5>FreeCodeCamp Interview Preparation</h5>
-        <p>A comprehensive, free coding interview prep curriculum with challenges and tutorials.</p>
-        <a href="https://www.freecodecamp.org/learn/coding-interview-prep/" target="_blank" rel="noopener" class="btn btn-warning">Start Learning</a>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card p-4">
-        <h5>InterviewBit</h5>
-        <p>Free interview preparation platform with <br> curated questions.</p>
-        <a href="https://www.interviewbit.com" target="_blank" rel="noopener" class="btn btn-warning">Start Preparing</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Importance of English in Tech -->
-  <div class="row mt-5">
-    <div class="col">
-        <h4 class="mb-3">Importance of English in Tech</h4>
-        <p>English is the primary language of documentation, tools, and communication in the tech industry. Improving your English can help you:</p>
-        <ul>
-          <li>Understand technical documentation and error messages.</li>
-          <li>Collaborate better in global teams and remote work environments.</li>
-          <li>Write professional emails, resumes, and GitHub READMEs.</li>
-          <li>Participate in forums, tech conferences, and open-source projects.</li>
+        <!-- Main Tabs -->
+        <ul class="nav nav-tabs justify-content-center flex-wrap" role="tablist" aria-label="Main guide sections">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="practice-tab" data-bs-toggle="tab" type="button" role="tab"
+                    aria-controls="practice" aria-selected="true" onclick="showMainSection('practice')">
+                    Practice Coding
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="interview-tab" data-bs-toggle="tab" type="button" role="tab"
+                    aria-controls="interview" aria-selected="false" onclick="showMainSection('interview')">
+                    Interview Tips
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" type="button" role="tab"
+                    aria-controls="profile" aria-selected="false" onclick="showMainSection('profile')">
+                    Professional Profiles
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="technews-tab" data-bs-toggle="tab" type="button" role="tab"
+                    aria-controls="technews" aria-selected="false" onclick="showMainSection('technews')">
+                    Tech News
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="freelancing-tab" data-bs-toggle="tab" type="button" role="tab"
+                    aria-controls="freelancing" aria-selected="false" onclick="showMainSection('freelancing')">
+                    Freelancing
+                </button>
+            </li>
         </ul>
 
-        <h5 class="mt-3">Key Skills to Focus On:</h5>
-        <ul>
-          <li><strong>Vocabulary:</strong> Learn commonly used technical and workplace terms.</li>
-          <li><strong>Writing:</strong> Practice clear and concise documentation and emails.</li>
-          <li><strong>Speaking:</strong> Work on pronunciation and confidence while explaining ideas.</li>
-          <li><strong>Listening:</strong> Watch tech talks, webinars, and product demos.</li>
-        </ul>
+        <!-- Roadmap & Passion Buttons (Centered Below Tabs) -->
 
-        <h5 class="mt-4">Useful Websites to Improve English:</h5>
-        <ul>
-          <li><a href="https://www.duolingo.com" target="_blank" rel="noopener">Duolingo</a> – Fun and gamified language learning.</li>
-          <li><a href="https://www.ef.com/english-resources/" target="_blank" rel="noopener">EF English Resources</a> – Grammar, writing, and vocabulary tips.</li>
-          <li><a href="https://www.britishcouncil.org/english" target="_blank" rel="noopener">British Council</a> – Courses and practice materials.</li>
-          <li><a href="https://learnenglish.britishcouncil.org/skills/writing" target="_blank" rel="noopener">LearnEnglish (Writing)</a> – Improve formal and professional writing.</li>
-        </ul>
-
-        <h5 class="mt-4">Recommended YouTube Channels:</h5>
-        <ul>
-          <li><a href="https://www.youtube.com/user/bbclearningenglish" target="_blank" rel="noopener">BBC Learning English</a> – Daily English lessons and tips.</li>
-          <li><a href="https://www.youtube.com/c/SpeakEnglishWithMrDuncan" target="_blank" rel="noopener">Speak English with Mr. Duncan</a> – Fun and engaging English lessons.</li>
-          <li><a href="https://www.youtube.com/c/EnglishAddictwithMrSteve" target="_blank" rel="noopener">English Addict with Mr Steve</a> – Vocabulary and live sessions.</li>
-          <li><a href="https://www.youtube.com/c/EnglishWithLucy" target="_blank" rel="noopener">English with Lucy</a> – British English, pronunciation, and grammar lessons.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-    <!-- Professional Profiles Section -->
-    <section id="profile" class="content-section d-none animate__animated">
-      <h2 class="section-title">Build Your Professional Profile</h2>
-
-      <h5>LinkedIn Best Practices</h5>
-      <ul class="guide-list">
-        <li>Use a professional profile photo and compelling headline.</li>
-        <li>Write a clear, concise summary highlighting your skills and goals.</li>
-        <li>Showcase projects, certifications, and endorsements.</li>
-        <li>Connect with colleagues, mentors, and industry professionals.</li>
-        <li>Engage by sharing articles and commenting on relevant posts.</li>
-      </ul>
- <a href="https://www.linkedin.com/pulse/how-create-perfect-linkedin-profile-jordan-berger" target="_blank" rel="noopener" class="btn btn-primary mb-4">LinkedIn Profile Tips</a>
-
-      <h5>GitHub Profile Tips</h5>
-      <ul class="guide-list">
-        <li>Pin your best and recent projects to your GitHub profile.</li>
-        <li>Write clear README files explaining project purpose and setup.</li>
-        <li>Use meaningful commit messages and keep repos organized.</li>
-        <li>Show contributions regularly and collaborate on open source.</li>
-        <li>Link your GitHub in your LinkedIn and resume.</li>
-      </ul>
-   <a href="https://docs.github.com/en/account-and-profile/managing-your-profile" target="_blank" rel="noopener" class="btn btn-primary mb-4">GitHub Profile Guide</a>
-
-    </section>
-
-    <!-- Tech News Section -->
-   <section id="technews" class="content-section d-none animate__animated animate__fadeIn">
-  <h2 class="section-title  fw-bold"> Latest Tech News & Updates</h2>
-  <div class="row g-4">
-    <div class="col-md-6">
-      <div class="card p-4">
-        <h5>TechCrunch</h5>
-        <p>Latest technology news and startup stories.</p>
-        <a href="https://techcrunch.com/" target="_blank" rel="noopener" class="btn btn-primary">Visit TechCrunch</a>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card p-4">
-        <h5>Hacker News</h5>
-        <p>Trending news for programmers and tech enthusiasts.</p>
-        <a href="https://news.ycombinator.com/" target="_blank" rel="noopener" class="btn btn-success">Visit Hacker News</a>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card p-4">
-        <h5>GitHub Blog</h5>
-        <p>Updates, features, and community stories from GitHub.</p>
-        <a href="https://github.blog/" target="_blank" rel="noopener" class="btn btn-dark">Visit GitHub Blog</a>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card p-4">
-        <h5>Smashing Magazine</h5>
-        <p>Web development, design news, tutorials, and resources.</p>
-        <a href="https://www.smashingmagazine.com/" target="_blank" rel="noopener" class="btn btn-warning">Visit Smashing Magazine</a>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card p-4">
-        <h5>Stack Overflow Blog</h5>
-        <p>Developer insights, company news, and community updates.</p>
-        <a href="https://stackoverflow.blog/" target="_blank" rel="noopener" class="btn btn-info">Visit Stack Overflow Blog</a>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card p-4">
-        <h5>Reddit r/programming</h5>
-        <p>Real-time discussions and news on all things programming.</p>
-        <a href="https://www.reddit.com/r/programming/" target="_blank" rel="noopener" class="btn btn-danger">Visit r/programming</a>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card p-4">
-        <h5>Ars Technica</h5>
-        <p>In-depth news on tech, science, security, and policy.</p>
-        <a href="https://arstechnica.com/" target="_blank" rel="noopener" class="btn btn-secondary">Visit Ars Technica</a>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card p-4">
-        <h5>The Verge - Tech</h5>
-        <p>Technology news, gadget reviews, and trends.</p>
-        <a href="https://www.theverge.com/tech" target="_blank" rel="noopener" class="btn btn-primary">Visit The Verge</a>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card p-4">
-        <h5>MIT Technology Review</h5>
-        <p>Authoritative journalism on tech innovation and research.</p>
-        <a href="https://www.technologyreview.com/" target="_blank" rel="noopener" class="btn btn-warning">Visit MIT Tech Review</a>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card p-4">
-        <h5>Wired</h5>
-        <p>Tech culture, future trends, and how tech affects our lives.</p>
-        <a href="https://www.wired.com/" target="_blank" rel="noopener" class="btn btn-success">Visit WIRED</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="freelancing" class="content-section animate__animated mt-5">
-  <h2 class="section-title">Freelancing & Earning in Tech</h2>
-  <p class="mb-4">Learn how to earn while studying with freelancing, AI tools, and inspiring success stories tailored for students and beginners.</p>
-  
-  <div class="row g-4">
-    <div class="col-md-4">
-      <div class="card p-4 h-100">
-        <h5>Complete Beginner’s Freelance Guide</h5>
-        <p>Practical step-by-step on setting up profiles, finding gigs, and building your first client base on top platforms.</p>
-        <a href="https://www.freelancer.com/community/articles/how-to-start-freelancing" target="_blank" rel="noopener" class="btn btn-primary">Get Started Now</a>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card p-4 h-100">
-        <h5>Top Freelancing Platforms for Students</h5>
-        <p>Overview of best platforms like Fiverr, Upwork, Freelancer, and specialized coding gigs on Toptal.</p>
-        <a href="https://www.upwork.com/resources/best-freelance-sites" target="_blank" rel="noopener" class="btn btn-success">Explore Platforms</a>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card p-4 h-100">
-        <h5>AI Tools to Maximize Your Productivity</h5>
-        <p>Learn how to use AI assistants, code generators, and automation tools to speed up your work and increase earnings.</p>
-        <a href="https://zapier.com/blog/best-ai-productivity-tools/" target="_blank" rel="noopener" class="btn btn-info">Discover AI Tools</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="row g-4 mt-3">
-    <div class="col-md-6">
-      <div class="card p-4 h-100">
-        <h5>Inspirational Freelance Success Stories</h5>
-        <p>Read about students and beginners who built thriving freelance careers balancing studies and work.</p>
-        <a href="https://www.sidehustlenation.com/freelance-success-stories/" target="_blank" rel="noopener" class="btn btn-warning">Get Inspired</a>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card p-4 h-100">
-        <h5>Guide to Building a Strong Freelance Portfolio</h5>
-        <p>Learn how to showcase your skills with projects, testimonials, and personal branding to attract clients.</p>
-        <a href="https://www.creativebloq.com/how-to/create-a-freelance-portfolio-that-gets-you-clients" target="_blank" rel="noopener" class="btn btn-danger">Build Your Portfolio</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="text-center mt-4">
-    <a href="https://www.fiverr.com/resources/guides/freelancer-success" target="_blank" rel="noopener" class="btn btn-lg btn-primary px-5">Kickstart Your Freelance Career Today</a>
-  </div>
-</section>
-
-<!-- Roadmap Section -->
-<section id="roadmap" class="content-section mt-5 d-none">
-  <h2 class="text-center mb-4">Choose Your Tech Roadmap</h2>
-  <p class="text-center text-muted mb-5">Explore career paths in technology. Pick what excites you most and start building your future today!</p>
-
-  <div class="row g-4">
-    <!-- Full Stack Development -->
-    <div class="col-md-6 col-lg-4">
-      <div class="card h-100 border-primary shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title text-primary">💻 Full Stack Developer</h5>
-          <p class="card-text">Master frontend and backend development using HTML, CSS, JavaScript, Node.js, React, and MongoDB.</p>
-          <strong>Job Roles:</strong>
-          <ul>
-            <li>Frontend Developer</li>
-            <li>Backend Developer</li>
-            <li>Full Stack Engineer</li>
-          </ul>
-          <a href="https://www.freecodecamp.org/learn" target="_blank" class="btn btn-outline-primary mt-2">Start on FreeCodeCamp</a>
+        <div class="mt-3 mb-5 d-flex justify-content-center gap-3 flex-wrap">
+            <button class="btn text-white px-4 rounded-pill" style="background-color: #343a40;"
+                onclick="showMainSection('roadmap')">
+                📍 Roadmap
+            </button>
+            <button class="btn text-white px-4 rounded-pill" style="background-color: #343a40;"
+                onclick="showMainSection('passion')">
+                ❤️ Passion
+            </button>
+            <button class="btn text-white px-4 rounded-pill" style="background-color: #343a40;"
+                onclick="showMainSection('certifications')">
+                🎓 Certifications
+            </button>
+            <button class="btn text-white px-4 rounded-pill" style="background-color: #343a40;"
+                onclick="showMainSection('networking')">
+                🌐 Networking
+            </button>
         </div>
-      </div>
-    </div>
-
-    <!-- AI & Robotics -->
-    <div class="col-md-6 col-lg-4">
-      <div class="card h-100 border-success shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title text-success">🤖 AI & Robotics</h5>
-          <p class="card-text">Learn Python, ML, and robotics using libraries like TensorFlow, and hardware like Arduino or Raspberry Pi.</p>
-          <strong>Job Roles:</strong>
-          <ul>
-            <li>ML Engineer</li>
-            <li>AI Researcher</li>
-            <li>Robotics Programmer</li>
-          </ul>
-          <a href="https://www.coursera.org/specializations/machine-learning-introduction" target="_blank" class="btn btn-outline-success mt-2">Explore on Coursera</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- UI/UX Design -->
-    <div class="col-md-6 col-lg-4">
-      <div class="card h-100 border-info shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title text-info">🎨 UI/UX & Product Design</h5>
-          <p class="card-text">Learn Figma, Adobe XD, design systems, user journeys, and accessibility principles for great user experience.</p>
-          <strong>Job Roles:</strong>
-          <ul>
-            <li>UI/UX Designer</li>
-            <li>Interaction Designer</li>
-            <li>Product Designer</li>
-          </ul>
-          <a href="https://www.figma.com/resources/learn-design/" target="_blank" class="btn btn-outline-info mt-2">Learn on Figma</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Multimedia & Animation -->
-    <div class="col-md-6 col-lg-4">
-      <div class="card h-100 border-warning shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title text-warning">📽️ Multimedia & Animation</h5>
-          <p class="card-text">Explore video editing, motion graphics, and 3D animation using After Effects, Blender, and Canva.</p>
-          <strong>Job Roles:</strong>
-          <ul>
-            <li>Animator</li>
-            <li>Video Editor</li>
-            <li>Multimedia Designer</li>
-          </ul>
-          <a href="https://www.blender.org/support/tutorials/" target="_blank" class="btn btn-outline-warning mt-2">Learn with Blender</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Cybersecurity -->
-    <div class="col-md-6 col-lg-4">
-      <div class="card h-100 border-danger shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title text-danger">🛡️ Cybersecurity</h5>
-          <p class="card-text">Learn ethical hacking, penetration testing, and network defense using platforms like TryHackMe and Cybrary.</p>
-          <strong>Job Roles:</strong>
-          <ul>
-            <li>Security Analyst</li>
-            <li>Penetration Tester</li>
-            <li>Cybersecurity Consultant</li>
-          </ul>
-          <a href="https://tryhackme.com/" target="_blank" class="btn btn-outline-danger mt-2">Practice on TryHackMe</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Game Development -->
-    <div class="col-md-6 col-lg-4">
-      <div class="card h-100 border-dark shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title text-dark">🎮 Game Development</h5>
-          <p class="card-text">Design and build games using Unity, Unreal Engine, and C#. Bring imagination to life with code and creativity.</p>
-          <strong>Job Roles:</strong>
-          <ul>
-            <li>Game Developer</li>
-            <li>Game Designer</li>
-            <li>3D Asset Creator</li>
-          </ul>
-          <a href="https://learn.unity.com/" target="_blank" class="btn btn-outline-dark mt-2">Learn on Unity</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Passion Section -->
-<section id="passion" class="content-section mt-5 d-none">
-  <h2 class="text-center mb-4">Discover & Develop Your Passion</h2>
-  <p class="text-center text-muted mb-5">
-    Finding your passion is the key to a fulfilling career and life. Follow this guide to uncover what drives you and how to turn it into success.
-  </p>
-
-  <div class="row g-4">
-    <!-- Step 1 -->
-    <div class="col-md-6 col-lg-4">
-      <div class="card h-100 border-primary shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title text-primary">🔍 Explore Yourself</h5>
-          <p class="card-text">
-            Reflect on your interests, strengths, and activities that energize you. Journaling or talking with mentors can help uncover your true passions.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Step 2 -->
-    <div class="col-md-6 col-lg-4">
-      <div class="card h-100 border-success shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title text-success">🎯 Set Clear Goals</h5>
-          <p class="card-text">
-            Define what success looks like for you. Break your passion into achievable milestones and create a realistic plan to pursue them step-by-step.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Step 3 -->
-    <div class="col-md-6 col-lg-4">
-      <div class="card h-100 border-info shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title text-info">📚 Learn Continuously</h5>
-          <p class="card-text">
-            Invest in learning through courses, books, and practice. Embrace challenges and failures as opportunities to grow your skills and knowledge.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Step 4 -->
-    <div class="col-md-6 col-lg-4">
-      <div class="card h-100 border-warning shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title text-warning">🤝 Connect & Collaborate</h5>
-          <p class="card-text">
-            Network with like-minded people. Join communities, attend events, and collaborate on projects to expand your perspective and opportunities.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Step 5 -->
-    <div class="col-md-6 col-lg-4">
-      <div class="card h-100 border-danger shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title text-danger">🚀 Take Action</h5>
-          <p class="card-text">
-            Don’t wait for the perfect moment. Start small, stay consistent, and adapt as you progress. Passion thrives on action and dedication.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Step 6 -->
-    <div class="col-md-6 col-lg-4">
-      <div class="card h-100 border-secondary shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title text-secondary">🌟 Stay Inspired</h5>
-          <p class="card-text">
-            Surround yourself with inspiring stories, mentors, and positive influences. Celebrate your progress and keep your motivation alive.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Useful Resources -->
-  <div class="mt-5 text-center">
-    <h4 class="mb-3">Useful Resources to Find & Cultivate Passion</h4>
-    <a href="https://www.ted.com/topics/passion" target="_blank" class="btn btn-outline-primary mx-2 my-1">TED Talks on Passion</a>
-    <a href="https://www.coursera.org/learn/find-your-passion" target="_blank" class="btn btn-outline-success mx-2 my-1">Coursera: Find Your Passion</a>
-    <a href="https://www.themuse.com/advice/how-to-find-your-passion" target="_blank" class="btn btn-outline-info mx-2 my-1">The Muse Guide</a>
-    <a href="https://jamesclear.com/passion" target="_blank" class="btn btn-outline-warning mx-2 my-1">James Clear: Passion & Purpose</a>
-  </div>
-</section>
-
-<!-- Certifications Section -->
-<section id="certifications" class="content-section mt-5 d-none">
-  <h2 class="text-center mb-4">Get Certified & Boost Your Career</h2>
-  <p class="text-center text-muted mb-5">
-    Earn valuable certifications from top platforms to validate your skills and stand out in the tech industry. Explore both free and paid options.
-  </p>
-
-  <div class="row g-4 justify-content-center">
-    <!-- Coursera -->
-    <div class="col-md-6 col-lg-4">
-      <div class="card h-100 shadow-sm border-primary">
-        <div class="card-body">
-          <h5 class="card-title text-primary">🎓 Coursera</h5>
-          <p class="card-text">Offers certifications from leading universities and companies. Many courses are free to audit; certification may require payment.</p>
-          <a href="https://www.coursera.org/certificates" target="_blank" class="btn btn-primary">Explore Coursera</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- edX -->
-    <div class="col-md-6 col-lg-4">
-      <div class="card h-100 shadow-sm border-success">
-        <div class="card-body">
-          <h5 class="card-title text-success">📚 edX</h5>
-          <p class="card-text">Free courses from top universities with optional paid certificates in areas like AI, data science, and programming.</p>
-          <a href="https://www.edx.org/certificates" target="_blank" class="btn btn-success">Explore edX</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- FreeCodeCamp -->
-    <div class="col-md-6 col-lg-4">
-      <div class="card h-100 shadow-sm border-info">
-        <div class="card-body">
-          <h5 class="card-title text-info">💻 FreeCodeCamp</h5>
-          <p class="card-text">Completely free coding certifications focused on web development, data structures, and algorithms.</p>
-          <a href="https://www.freecodecamp.org/certifications" target="_blank" class="btn btn-info">Explore FreeCodeCamp</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Google Career Certificates -->
-    <div class="col-md-6 col-lg-4">
-      <div class="card h-100 shadow-sm border-warning">
-        <div class="card-body">
-          <h5 class="card-title text-warning">🚀 Google Career Certificates</h5>
-          <p class="card-text">Affordable certification programs designed for in-demand jobs like IT support, data analytics, and project management.</p>
-          <a href="https://grow.google/certificates/" target="_blank" class="btn btn-warning">Explore Google Certificates</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- LinkedIn Learning -->
-    <div class="col-md-6 col-lg-4">
-      <div class="card h-100 shadow-sm border-danger">
-        <div class="card-body">
-          <h5 class="card-title text-danger">🔗 LinkedIn Learning</h5>
-          <p class="card-text">Wide variety of tech courses with certifications that enhance your LinkedIn profile. Subscription required after free trial.</p>
-          <a href="https://www.linkedin.com/learning/" target="_blank" class="btn btn-danger">Explore LinkedIn Learning</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Udemy -->
-    <div class="col-md-6 col-lg-4">
-      <div class="card h-100 shadow-sm border-secondary">
-        <div class="card-body">
-          <h5 class="card-title text-secondary">📖 Udemy</h5>
-          <p class="card-text">Affordable paid courses across all tech domains. Frequent discounts make certification accessible for many.</p>
-          <a href="https://www.udemy.com/courses/certification/" target="_blank" class="btn btn-secondary">Explore Udemy</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 
-<script>
-  function showMainSection(sectionId) {
-    // Hide all content sections
-    const sections = document.querySelectorAll('.content-section');
-    sections.forEach(sec => sec.classList.add('d-none'));
 
-    // Remove active class from all nav links
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => link.classList.remove('active'));
 
-    // Show the selected section and activate the nav link
-    document.getElementById(sectionId).classList.remove('d-none');
-    document.querySelector(`#${sectionId}-tab`).classList.add('active');
-  }
 
-  // Show default section on page load
-  document.addEventListener('DOMContentLoaded', () => {
-    showMainSection('practice');
-  });
+        <!-- Practice Coding Section -->
+        <section id="practice" class="content-section animate__animated">
+            <h2 class="section-title">Practice Coding - Select Language</h2>
+            <div class="btn-group language-btn-group mb-4" role="group" aria-label="Select coding language">
+                <button type="button" id="btn-python" class="btn btn-outline-primary active"
+                    onclick="showLanguageSection('python')">Python</button>
+                <button type="button" id="btn-cpp" class="btn btn-outline-primary"
+                    onclick="showLanguageSection('cpp')">C++</button>
+                <button type="button" id="btn-c" class="btn btn-outline-primary"
+                    onclick="showLanguageSection('c')">C</button>
+                <button type="button" id="btn-extra" class="btn btn-outline-primary"
+                    onclick="showLanguageSection('extra')">More</button>
+            </div>
 
-  function showLanguageSection(langId) {
-    const languages = ['python', 'cpp', 'c'];
-    languages.forEach(lang => {
-      document.getElementById(lang).classList.add('d-none');
-      document.getElementById(`btn-${lang}`).classList.remove('active');
-    });
-    document.getElementById(langId).classList.remove('d-none');
-    document.getElementById(`btn-${langId}`).classList.add('active');
-  }
-</script>
-<style>
-  .content-section {
-    padding: 1.5rem;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  }
-  .section-title {
-    font-weight: 700;
-    margin-bottom: 1rem;
-  }
-  .guide-list li {
-    margin-bottom: 0.5rem;
-  }
-  .btn-group.language-btn-group .btn {
-    min-width: 120px;
-  }
-</style>
-<footer class="bg-dark text-light text-center py-3" style="background: linear-gradient(135deg, #0d47a1, #1976d2);">
-  <small>&copy; 2025 <strong>Multimedia</strong>. Crafted with 💙 for Students</small>
-</footer>
+            <!-- Python -->
+            <div id="python" class="language-section">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card p-4">
+                            <h5>LeetCode Python</h5>
+                            <p>Practice Python problems on LeetCode with easy to hard challenges.</p>
+                            <a href="https://leetcode.com/problemset/all/?difficulty=Easy&topicSlugs=python"
+                                target="_blank" rel="noopener" class="btn btn-primary">Start Practicing</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card p-4">
+                            <h5>HackerRank Python</h5>
+                            <p>Sharpen your Python skills with coding challenges on HackerRank.</p>
+                            <a href="https://www.hackerrank.com/domains/python" target="_blank" rel="noopener"
+                                class="btn btn-success">Try Challenges</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- C++ -->
+            <div id="cpp" class="language-section d-none">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card p-4">
+                            <h5>LeetCode C++</h5>
+                            <p>Enhance your C++ skills with curated problems on LeetCode.</p>
+                            <a href="https://leetcode.com/problemset/all/?difficulty=Easy&topicSlugs=cplusplus"
+                                target="_blank" rel="noopener" class="btn btn-primary">Start Practicing</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card p-4">
+                            <h5>Codeforces C++</h5>
+                            <p>Participate in contests and solve problems using C++ on Codeforces.</p>
+                            <a href="https://codeforces.com/problemset?tags=implementation" target="_blank"
+                                rel="noopener" class="btn btn-success">Join Contests</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- C -->
+            <div id="c" class="language-section d-none">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card p-4">
+                            <h5>GeeksforGeeks C</h5>
+                            <p>Learn and practice C programming with problems and tutorials.</p>
+                            <a href="https://practice.geeksforgeeks.org/explore/?category%5B%5D=C" target="_blank"
+                                rel="noopener" class="btn btn-primary">Explore Problems</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card p-4">
+                            <h5>HackerRank C</h5>
+                            <p>Sharpen your C skills with challenges from HackerRank.</p>
+                            <a href="https://www.hackerrank.com/domains/c" target="_blank" rel="noopener"
+                                class="btn btn-success">Try Challenges</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Extra Platforms -->
+            <div id="extra" class="language-section d-none">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card p-4">
+                            <h5>Exercism</h5>
+                            <p>Practice 60+ languages with mentor-supported exercises.</p>
+                            <a href="https://exercism.org/" target="_blank" rel="noopener" class="btn btn-info">Go to
+                                Exercism</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card p-4">
+                            <h5>Codewars</h5>
+                            <p>Solve kata (challenges) in Python, C, C++, and more with rankings.</p>
+                            <a href="https://www.codewars.com/" target="_blank" rel="noopener" class="btn btn-danger">Go
+                                to Codewars</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card p-4">
+                            <h5>Edabit</h5>
+                            <p>Beginner-friendly bite-sized coding challenges in many languages.</p>
+                            <a href="https://edabit.com/" target="_blank" rel="noopener" class="btn btn-warning">Visit
+                                Edabit</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card p-4">
+                            <h5>CS50 Lab</h5>
+                            <p>Interactive C coding problems from Harvard’s CS50 course.</p>
+                            <a href="https://lab.cs50.io/" target="_blank" rel="noopener" class="btn btn-primary">Try
+                                CS50 Lab</a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Interview Tips Section -->
+        <section id="interview" class="content-section d-none">
+            <h2 class="section-title text-center mb-4">Interview Preparation Guide</h2>
+
+            <ul class="guide-list">
+                <li>Research the company and understand its products & culture.</li>
+                <li>Practice common data structures and algorithms questions.</li>
+                <li>Prepare answers for behavioral questions using the STAR method.</li>
+                <li>Mock interviews with peers or platforms like <a href="https://www.pramp.com" target="_blank"
+                        rel="noopener" class="external-link">Pramp</a>.</li>
+                <li>Prepare thoughtful questions to ask the interviewer.</li>
+                <li>Dress professionally and be punctual for your interview.</li>
+                <li>Follow up with a thank-you email post-interview.</li>
+            </ul>
+
+            <div class="row mt-4 g-4">
+                <div class="col-md-6">
+                    <div class="card p-4">
+                        <h5>FreeCodeCamp Interview Preparation</h5>
+                        <p>A comprehensive, free coding interview prep curriculum with challenges and tutorials.</p>
+                        <a href="https://www.freecodecamp.org/learn/coding-interview-prep/" target="_blank"
+                            rel="noopener" class="btn btn-warning">Start Learning</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card p-4">
+                        <h5>InterviewBit</h5>
+                        <p>Free interview preparation platform with <br> curated questions.</p>
+                        <a href="https://www.interviewbit.com" target="_blank" rel="noopener"
+                            class="btn btn-warning">Start Preparing</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Importance of English in Tech -->
+            <div class="row mt-5">
+                <div class="col">
+                    <h4 class="mb-3">Importance of English in Tech</h4>
+                    <p>English is the primary language of documentation, tools, and communication in the tech industry.
+                        Improving your English can help you:</p>
+                    <ul>
+                        <li>Understand technical documentation and error messages.</li>
+                        <li>Collaborate better in global teams and remote work environments.</li>
+                        <li>Write professional emails, resumes, and GitHub READMEs.</li>
+                        <li>Participate in forums, tech conferences, and open-source projects.</li>
+                    </ul>
+
+                    <h5 class="mt-3">Key Skills to Focus On:</h5>
+                    <ul>
+                        <li><strong>Vocabulary:</strong> Learn commonly used technical and workplace terms.</li>
+                        <li><strong>Writing:</strong> Practice clear and concise documentation and emails.</li>
+                        <li><strong>Speaking:</strong> Work on pronunciation and confidence while explaining ideas.</li>
+                        <li><strong>Listening:</strong> Watch tech talks, webinars, and product demos.</li>
+                    </ul>
+
+                    <h5 class="mt-4">Useful Websites to Improve English:</h5>
+                    <ul>
+                        <li><a href="https://www.duolingo.com" target="_blank" rel="noopener">Duolingo</a> – Fun and
+                            gamified language learning.</li>
+                        <li><a href="https://www.ef.com/english-resources/" target="_blank" rel="noopener">EF English
+                                Resources</a> – Grammar, writing, and vocabulary tips.</li>
+                        <li><a href="https://www.britishcouncil.org/english" target="_blank" rel="noopener">British
+                                Council</a> – Courses and practice materials.</li>
+                        <li><a href="https://learnenglish.britishcouncil.org/skills/writing" target="_blank"
+                                rel="noopener">LearnEnglish (Writing)</a> – Improve formal and professional writing.
+                        </li>
+                    </ul>
+
+                    <h5 class="mt-4">Recommended YouTube Channels:</h5>
+                    <ul>
+                        <li><a href="https://www.youtube.com/user/bbclearningenglish" target="_blank" rel="noopener">BBC
+                                Learning English</a> – Daily English lessons and tips.</li>
+                        <li><a href="https://www.youtube.com/c/SpeakEnglishWithMrDuncan" target="_blank"
+                                rel="noopener">Speak English with Mr. Duncan</a> – Fun and engaging English lessons.
+                        </li>
+                        <li><a href="https://www.youtube.com/c/EnglishAddictwithMrSteve" target="_blank"
+                                rel="noopener">English Addict with Mr Steve</a> – Vocabulary and live sessions.</li>
+                        <li><a href="https://www.youtube.com/c/EnglishWithLucy" target="_blank" rel="noopener">English
+                                with Lucy</a> – British English, pronunciation, and grammar lessons.</li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+        </section>
+
+
+        <!-- Professional Profiles Section -->
+        <section id="profile" class="content-section d-none animate__animated">
+            <h2 class="section-title">Build Your Professional Profile</h2>
+
+            <h5>LinkedIn Best Practices</h5>
+            <ul class="guide-list">
+                <li>Use a professional profile photo and compelling headline.</li>
+                <li>Write a clear, concise summary highlighting your skills and goals.</li>
+                <li>Showcase projects, certifications, and endorsements.</li>
+                <li>Connect with colleagues, mentors, and industry professionals.</li>
+                <li>Engage by sharing articles and commenting on relevant posts.</li>
+            </ul>
+            <a href="https://www.linkedin.com/pulse/how-create-perfect-linkedin-profile-jordan-berger" target="_blank"
+                rel="noopener" class="btn btn-primary mb-4">LinkedIn Profile Tips</a>
+
+            <h5>GitHub Profile Tips</h5>
+            <ul class="guide-list">
+                <li>Pin your best and recent projects to your GitHub profile.</li>
+                <li>Write clear README files explaining project purpose and setup.</li>
+                <li>Use meaningful commit messages and keep repos organized.</li>
+                <li>Show contributions regularly and collaborate on open source.</li>
+                <li>Link your GitHub in your LinkedIn and resume.</li>
+            </ul>
+            <a href="https://docs.github.com/en/account-and-profile/managing-your-profile" target="_blank"
+                rel="noopener" class="btn btn-primary mb-4">GitHub Profile Guide</a>
+
+        </section>
+
+        <!-- Tech News Section -->
+        <section id="technews" class="content-section d-none animate__animated animate__fadeIn">
+            <h2 class="section-title  fw-bold"> Latest Tech News & Updates</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card p-4">
+                        <h5>TechCrunch</h5>
+                        <p>Latest technology news and startup stories.</p>
+                        <a href="https://techcrunch.com/" target="_blank" rel="noopener" class="btn btn-primary">Visit
+                            TechCrunch</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card p-4">
+                        <h5>Hacker News</h5>
+                        <p>Trending news for programmers and tech enthusiasts.</p>
+                        <a href="https://news.ycombinator.com/" target="_blank" rel="noopener"
+                            class="btn btn-success">Visit Hacker News</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card p-4">
+                        <h5>GitHub Blog</h5>
+                        <p>Updates, features, and community stories from GitHub.</p>
+                        <a href="https://github.blog/" target="_blank" rel="noopener" class="btn btn-dark">Visit GitHub
+                            Blog</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card p-4">
+                        <h5>Smashing Magazine</h5>
+                        <p>Web development, design news, tutorials, and resources.</p>
+                        <a href="https://www.smashingmagazine.com/" target="_blank" rel="noopener"
+                            class="btn btn-warning">Visit Smashing Magazine</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card p-4">
+                        <h5>Stack Overflow Blog</h5>
+                        <p>Developer insights, company news, and community updates.</p>
+                        <a href="https://stackoverflow.blog/" target="_blank" rel="noopener" class="btn btn-info">Visit
+                            Stack Overflow Blog</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card p-4">
+                        <h5>Reddit r/programming</h5>
+                        <p>Real-time discussions and news on all things programming.</p>
+                        <a href="https://www.reddit.com/r/programming/" target="_blank" rel="noopener"
+                            class="btn btn-danger">Visit r/programming</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card p-4">
+                        <h5>Ars Technica</h5>
+                        <p>In-depth news on tech, science, security, and policy.</p>
+                        <a href="https://arstechnica.com/" target="_blank" rel="noopener"
+                            class="btn btn-secondary">Visit Ars Technica</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card p-4">
+                        <h5>The Verge - Tech</h5>
+                        <p>Technology news, gadget reviews, and trends.</p>
+                        <a href="https://www.theverge.com/tech" target="_blank" rel="noopener"
+                            class="btn btn-primary">Visit The Verge</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card p-4">
+                        <h5>MIT Technology Review</h5>
+                        <p>Authoritative journalism on tech innovation and research.</p>
+                        <a href="https://www.technologyreview.com/" target="_blank" rel="noopener"
+                            class="btn btn-warning">Visit MIT Tech Review</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card p-4">
+                        <h5>Wired</h5>
+                        <p>Tech culture, future trends, and how tech affects our lives.</p>
+                        <a href="https://www.wired.com/" target="_blank" rel="noopener" class="btn btn-success">Visit
+                            WIRED</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="freelancing" class="content-section animate__animated mt-5">
+            <h2 class="section-title">Freelancing & Earning in Tech</h2>
+            <p class="mb-4">Learn how to earn while studying with freelancing, AI tools, and inspiring success stories
+                tailored for students and beginners.</p>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card p-4 h-100">
+                        <h5>Complete Beginner’s Freelance Guide</h5>
+                        <p>Practical step-by-step on setting up profiles, finding gigs, and building your first client
+                            base on top platforms.</p>
+                        <a href="https://www.freelancer.com/community/articles/how-to-start-freelancing" target="_blank"
+                            rel="noopener" class="btn btn-primary">Get Started Now</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card p-4 h-100">
+                        <h5>Top Freelancing Platforms for Students</h5>
+                        <p>Overview of best platforms like Fiverr, Upwork, Freelancer, and specialized coding gigs on
+                            Toptal.</p>
+                        <a href="https://www.upwork.com/resources/best-freelance-sites" target="_blank" rel="noopener"
+                            class="btn btn-success">Explore Platforms</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card p-4 h-100">
+                        <h5>AI Tools to Maximize Your Productivity</h5>
+                        <p>Learn how to use AI assistants, code generators, and automation tools to speed up your work
+                            and increase earnings.</p>
+                        <a href="https://zapier.com/blog/best-ai-productivity-tools/" target="_blank" rel="noopener"
+                            class="btn btn-info">Discover AI Tools</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4 mt-3">
+                <div class="col-md-6">
+                    <div class="card p-4 h-100">
+                        <h5>Inspirational Freelance Success Stories</h5>
+                        <p>Read about students and beginners who built thriving freelance careers balancing studies and
+                            work.</p>
+                        <a href="https://www.sidehustlenation.com/freelance-success-stories/" target="_blank"
+                            rel="noopener" class="btn btn-warning">Get Inspired</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card p-4 h-100">
+                        <h5>Guide to Building a Strong Freelance Portfolio</h5>
+                        <p>Learn how to showcase your skills with projects, testimonials, and personal branding to
+                            attract clients.</p>
+                        <a href="https://www.creativebloq.com/how-to/create-a-freelance-portfolio-that-gets-you-clients"
+                            target="_blank" rel="noopener" class="btn btn-danger">Build Your Portfolio</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="https://www.fiverr.com/resources/guides/freelancer-success" target="_blank" rel="noopener"
+                    class="btn btn-lg btn-primary px-5">Kickstart Your Freelance Career Today</a>
+            </div>
+        </section>
+
+        <!-- Roadmap Section -->
+        <section id="roadmap" class="content-section mt-5 d-none">
+            <h2 class="text-center mb-4">Choose Your Tech Roadmap</h2>
+            <p class="text-center text-muted mb-5">Explore career paths in technology. Pick what excites you most and
+                start building your future today!</p>
+
+            <div class="row g-4">
+                <!-- Full Stack Development -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-primary shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">💻 Full Stack Developer</h5>
+                            <p class="card-text">Master frontend and backend development using HTML, CSS, JavaScript,
+                                Node.js, React, and MongoDB.</p>
+                            <strong>Job Roles:</strong>
+                            <ul>
+                                <li>Frontend Developer</li>
+                                <li>Backend Developer</li>
+                                <li>Full Stack Engineer</li>
+                            </ul>
+                            <a href="https://www.freecodecamp.org/learn" target="_blank"
+                                class="btn btn-outline-primary mt-2">Start on FreeCodeCamp</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI & Robotics -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-success shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-success">🤖 AI & Robotics</h5>
+                            <p class="card-text">Learn Python, ML, and robotics using libraries like TensorFlow, and
+                                hardware like Arduino or Raspberry Pi.</p>
+                            <strong>Job Roles:</strong>
+                            <ul>
+                                <li>ML Engineer</li>
+                                <li>AI Researcher</li>
+                                <li>Robotics Programmer</li>
+                            </ul>
+                            <a href="https://www.coursera.org/specializations/machine-learning-introduction"
+                                target="_blank" class="btn btn-outline-success mt-2">Explore on Coursera</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UI/UX Design -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-info shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-info">🎨 UI/UX & Product Design</h5>
+                            <p class="card-text">Learn Figma, Adobe XD, design systems, user journeys, and accessibility
+                                principles for great user experience.</p>
+                            <strong>Job Roles:</strong>
+                            <ul>
+                                <li>UI/UX Designer</li>
+                                <li>Interaction Designer</li>
+                                <li>Product Designer</li>
+                            </ul>
+                            <a href="https://www.figma.com/resources/learn-design/" target="_blank"
+                                class="btn btn-outline-info mt-2">Learn on Figma</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Multimedia & Animation -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-warning shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-warning">📽️ Multimedia & Animation</h5>
+                            <p class="card-text">Explore video editing, motion graphics, and 3D animation using After
+                                Effects, Blender, and Canva.</p>
+                            <strong>Job Roles:</strong>
+                            <ul>
+                                <li>Animator</li>
+                                <li>Video Editor</li>
+                                <li>Multimedia Designer</li>
+                            </ul>
+                            <a href="https://www.blender.org/support/tutorials/" target="_blank"
+                                class="btn btn-outline-warning mt-2">Learn with Blender</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cybersecurity -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-danger shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-danger">🛡️ Cybersecurity</h5>
+                            <p class="card-text">Learn ethical hacking, penetration testing, and network defense using
+                                platforms like TryHackMe and Cybrary.</p>
+                            <strong>Job Roles:</strong>
+                            <ul>
+                                <li>Security Analyst</li>
+                                <li>Penetration Tester</li>
+                                <li>Cybersecurity Consultant</li>
+                            </ul>
+                            <a href="https://tryhackme.com/" target="_blank"
+                                class="btn btn-outline-danger mt-2">Practice on TryHackMe</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Development -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-dark shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">🎮 Game Development</h5>
+                            <p class="card-text">Design and build games using Unity, Unreal Engine, and C#. Bring
+                                imagination to life with code and creativity.</p>
+                            <strong>Job Roles:</strong>
+                            <ul>
+                                <li>Game Developer</li>
+                                <li>Game Designer</li>
+                                <li>3D Asset Creator</li>
+                            </ul>
+                            <a href="https://learn.unity.com/" target="_blank" class="btn btn-outline-dark mt-2">Learn
+                                on Unity</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Passion Section -->
+        <section id="passion" class="content-section mt-5 d-none">
+            <h2 class="text-center mb-4">Discover & Develop Your Passion</h2>
+            <p class="text-center text-muted mb-5">
+                Finding your passion is the key to a fulfilling career and life. Follow this guide to uncover what
+                drives you and how to turn it into success.
+            </p>
+
+            <div class="row g-4">
+                <!-- Step 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-primary shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">🔍 Explore Yourself</h5>
+                            <p class="card-text">
+                                Reflect on your interests, strengths, and activities that energize you. Journaling or
+                                talking with mentors can help uncover your true passions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-success shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-success">🎯 Set Clear Goals</h5>
+                            <p class="card-text">
+                                Define what success looks like for you. Break your passion into achievable milestones
+                                and create a realistic plan to pursue them step-by-step.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-info shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-info">📚 Learn Continuously</h5>
+                            <p class="card-text">
+                                Invest in learning through courses, books, and practice. Embrace challenges and failures
+                                as opportunities to grow your skills and knowledge.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-warning shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-warning">🤝 Connect & Collaborate</h5>
+                            <p class="card-text">
+                                Network with like-minded people. Join communities, attend events, and collaborate on
+                                projects to expand your perspective and opportunities.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-danger shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-danger">🚀 Take Action</h5>
+                            <p class="card-text">
+                                Don’t wait for the perfect moment. Start small, stay consistent, and adapt as you
+                                progress. Passion thrives on action and dedication.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-secondary shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-secondary">🌟 Stay Inspired</h5>
+                            <p class="card-text">
+                                Surround yourself with inspiring stories, mentors, and positive influences. Celebrate
+                                your progress and keep your motivation alive.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Useful Resources -->
+            <div class="mt-5 text-center">
+                <h4 class="mb-3">Useful Resources to Find & Cultivate Passion</h4>
+                <a href="https://www.ted.com/topics/passion" target="_blank"
+                    class="btn btn-outline-primary mx-2 my-1">TED Talks on Passion</a>
+                <a href="https://www.coursera.org/learn/find-your-passion" target="_blank"
+                    class="btn btn-outline-success mx-2 my-1">Coursera: Find Your Passion</a>
+                <a href="https://www.themuse.com/advice/how-to-find-your-passion" target="_blank"
+                    class="btn btn-outline-info mx-2 my-1">The Muse Guide</a>
+                <a href="https://jamesclear.com/passion" target="_blank" class="btn btn-outline-warning mx-2 my-1">James
+                    Clear: Passion & Purpose</a>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="content-section mt-5 d-none">
+            <h2 class="text-center mb-4">Get Certified & Boost Your Career</h2>
+            <p class="text-center text-muted mb-5">
+                Earn valuable certifications from top platforms to validate your skills and stand out in the tech
+                industry. Explore both free and paid options.
+            </p>
+
+            <div class="row g-4 justify-content-center">
+                <!-- Coursera -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-primary">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">🎓 Coursera</h5>
+                            <p class="card-text">Offers certifications from leading universities and companies. Many
+                                courses are free to audit; certification may require payment.</p>
+                            <a href="https://www.coursera.org/certificates" target="_blank"
+                                class="btn btn-primary">Explore Coursera</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- edX -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-success">
+                        <div class="card-body">
+                            <h5 class="card-title text-success">📚 edX</h5>
+                            <p class="card-text">Free courses from top universities with optional paid certificates in
+                                areas like AI, data science, and programming.</p>
+                            <a href="https://www.edx.org/certificates" target="_blank" class="btn btn-success">Explore
+                                edX</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FreeCodeCamp -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-info">
+                        <div class="card-body">
+                            <h5 class="card-title text-info">💻 FreeCodeCamp</h5>
+                            <p class="card-text">Completely free coding certifications focused on web development, data
+                                structures, and algorithms.</p>
+                            <a href="https://www.freecodecamp.org/certifications" target="_blank"
+                                class="btn btn-info">Explore FreeCodeCamp</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Career Certificates -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-warning">
+                        <div class="card-body">
+                            <h5 class="card-title text-warning">🚀 Google Career Certificates</h5>
+                            <p class="card-text">Affordable certification programs designed for in-demand jobs like IT
+                                support, data analytics, and project management.</p>
+                            <a href="https://grow.google/certificates/" target="_blank" class="btn btn-warning">Explore
+                                Google Certificates</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LinkedIn Learning -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-danger">
+                        <div class="card-body">
+                            <h5 class="card-title text-danger">🔗 LinkedIn Learning</h5>
+                            <p class="card-text">Wide variety of tech courses with certifications that enhance your
+                                LinkedIn profile. Subscription required after free trial.</p>
+                            <a href="https://www.linkedin.com/learning/" target="_blank" class="btn btn-danger">Explore
+                                LinkedIn Learning</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Udemy -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-secondary">
+                        <div class="card-body">
+                            <h5 class="card-title text-secondary">📖 Udemy</h5>
+                            <p class="card-text">Affordable paid courses across all tech domains. Frequent discounts
+                                make certification accessible for many.</p>
+                            <a href="https://www.udemy.com/courses/certification/" target="_blank"
+                                class="btn btn-secondary">Explore Udemy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Networking Section -->
+        <section id="networking" class="content-section mt-5 d-none">
+            <h2 class="text-center mb-4">Networking & Community Engagement</h2>
+            <p class="text-center text-muted mb-5">
+                Connect with vibrant tech communities, participate in hackathons, and attend workshops—especially in
+                Kerala! Networking helps you learn, grow, and open career opportunities.
+            </p>
+
+            <style>
+                .card.equal-height {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    height: 100%;
+                }
+            </style>
+
+            <div class="container my-5">
+                <div class="row g-4">
+                    <!-- Developer Communities -->
+                    <div class="col-md-4">
+                        <div class="card equal-height shadow-sm border-primary h-100">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title text-primary">👥 Developer Communities</h5>
+                                <p>Join local and global groups to share knowledge, collaborate on exciting projects,
+                                    attend meetups, and build meaningful professional connections that can boost your
+                                    career.</p>
+                                <ul>
+                                    <li>
+                                        <a href="https://www.facebook.com/groups/friendsoffigma.kozhikode/"
+                                            target="_blank" rel="noopener">Friends of Figma Kozhikode</a> – A passionate
+                                        community focused on UI/UX design and prototyping using Figma. Great for
+                                        designers looking to network and learn practical tips.
+                                    </li>
+                                    <li>
+                                        <a href="https://gdgkerala.org/" target="_blank" rel="noopener">Google Developer
+                                            Group (GDG) Kerala</a> – Explore Google's latest technologies, attend
+                                        workshops, hackathons, and networking events to keep your skills cutting-edge.
+                                    </li>
+                                    <li>
+                                        <a href="https://flutterkerala.in/" target="_blank" rel="noopener">Flutter
+                                            Kerala</a> – Connect with Flutter developers building beautiful, performant
+                                        cross-platform apps.
+                                    </li>
+                                </ul>
+                                <p>
+                                    <strong>Why participate?</strong> Enhance your technical skills, gain mentorship
+                                    from experienced developers, find freelance and job opportunities, and stay updated
+                                    on emerging industry trends through active community involvement.
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Hackathons & Competitions -->
+                    <div class="col-md-4">
+                        <div class="card equal-height shadow-sm border-success h-100">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title text-success">🏆 Hackathons & Competitions</h5>
+                                <p>Participate in coding challenges and hackathons to solve real-world problems,
+                                    collaborate with diverse teams, and showcase your talents to potential employers.
+                                    These events help sharpen your problem-solving skills, foster creativity, and offer
+                                    a platform to innovate under time constraints.</p>
+                                <ul>
+                                    <li><a href="https://mlh.io/seasons/2024/events" target="_blank"
+                                            rel="noopener">Major League Hacking (MLH) Events</a> – Global student
+                                        hackathons and workshops focused on learning and innovation.</li>
+                                    <li><a href="https://www.hackerearth.com/challenges/" target="_blank"
+                                            rel="noopener">HackerEarth Challenges</a> – Online competitions including
+                                        coding challenges, hiring contests, and more.</li>
+                                    <li><a href="https://www.techkriti.org/" target="_blank" rel="noopener">Techkriti
+                                            (IIT Kanpur) National Hackathon</a> – Prestigious tech fest hackathon
+                                        encouraging innovation and collaboration.</li>
+                                </ul>
+                                <p><strong>Benefits:</strong> Gain hands-on experience, network with peers and mentors,
+                                    improve your coding skills, and boost your resume with impressive projects and
+                                    awards.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Workshops & Training -->
+                    <div class="col-md-4">
+                        <div class="card equal-height shadow-sm border-info h-100">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title text-info">📚 Workshops & Training</h5>
+                                <p>Attend workshops focused on the latest technologies, frameworks, and tools to stay
+                                    updated with industry trends. These sessions often include hands-on training,
+                                    enabling practical learning and immediate application. Workshops can be online or
+                                    offline, providing an excellent opportunity to learn directly from experts and
+                                    industry professionals.</p>
+                                <ul>
+                                    <li><a href="https://www.meetup.com/keralatechworkshops/" target="_blank"
+                                            rel="noopener">Kerala Tech Workshops</a> – Local workshops covering a wide
+                                        range of tech topics and skill-building sessions.</li>
+                                    <li><a href="https://www.eventbrite.com/d/india--kochi/workshops/" target="_blank"
+                                            rel="noopener">Eventbrite Kochi Workshops</a> – Diverse workshops and
+                                        bootcamps hosted in Kochi for tech enthusiasts.</li>
+                                    <li><a href="https://www.geeksforgeeks.org/workshops/" target="_blank"
+                                            rel="noopener">GeeksforGeeks Workshops & Events</a> – Regular workshops and
+                                        webinars on coding, data structures, and software development.</li>
+                                </ul>
+                                <p><strong>Why attend?</strong> Learn from industry experts, earn certifications that
+                                    add value to your profile, enhance your skills, and build valuable professional
+                                    networks.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
+        <script>
+            function showMainSection(sectionId) {
+                // Hide all content sections
+                const sections = document.querySelectorAll('.content-section');
+                sections.forEach(sec => sec.classList.add('d-none'));
+
+                // Remove active class from all nav links
+                const navLinks = document.querySelectorAll('.nav-link');
+                navLinks.forEach(link => link.classList.remove('active'));
+
+                // Show the selected section and activate the nav link
+                document.getElementById(sectionId).classList.remove('d-none');
+                document.querySelector(`#${sectionId}-tab`).classList.add('active');
+            }
+
+            // Show default section on page load
+            document.addEventListener('DOMContentLoaded', () => {
+                showMainSection('practice');
+            });
+
+            function showLanguageSection(langId) {
+                const languages = ['python', 'cpp', 'c'];
+                languages.forEach(lang => {
+                    document.getElementById(lang).classList.add('d-none');
+                    document.getElementById(`btn-${lang}`).classList.remove('active');
+                });
+                document.getElementById(langId).classList.remove('d-none');
+                document.getElementById(`btn-${langId}`).classList.add('active');
+            }
+        </script>
+
+        <footer class="bg-dark text-light text-center py-3"
+            style="background: linear-gradient(135deg, #0d47a1, #1976d2);">
+            <small>&copy; 2025 <strong>Multimedia</strong>. Crafted with 💙 for Students</small>
+        </footer>
