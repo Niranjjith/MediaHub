@@ -2,24 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Resume Builder - Developer</title>
+  <title>Resume Builder</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
-      background: #f4f6f8;
+      background: #f0f2f5;
       margin: 0;
-      padding: 30px;
-      display: flex;
-      gap: 30px;
+      padding: 20px;
+    }
+
+    .main-heading {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 700;
+      color: #5f27cd;
+      margin-bottom: 30px;
     }
 
     .container {
       display: flex;
       gap: 30px;
-      width: 100%;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: flex-start;
     }
 
     .form, .preview {
@@ -27,14 +39,11 @@
       padding: 25px 30px;
       border-radius: 16px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-      flex: 1;
-      max-height: 90vh;
-      overflow-y: auto;
     }
 
-    .form h2 {
-      margin-top: 0;
-      color: #333;
+    .form {
+      flex: 1;
+      min-width: 280px;
     }
 
     .form input, .form textarea {
@@ -46,6 +55,24 @@
       font-size: 14px;
     }
 
+    .form h2 {
+      margin-top: 20px;
+      color: #333;
+      font-size: 20px;
+    }
+
+    .preview-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .preview {
+      max-width: 100%;
+    }
+
     button {
       background-color: #5f27cd;
       color: #fff;
@@ -54,26 +81,27 @@
       border-radius: 8px;
       cursor: pointer;
       font-weight: 600;
-      margin-top: 10px;
     }
 
-    .preview {
-      background: #fff;
-      color: #222;
-      padding: 40px 30px;
-      border-radius: 12px;
-      font-family: 'Inter', sans-serif;
-      max-width: 800px;
-      margin: auto;
+    .resume-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
     }
 
-    .preview h1 {
-      font-size: 36px;
+    .resume-left, .resume-right {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .resume-left h1 {
+      font-size: 28px;
       font-weight: 700;
       margin: 0;
+      color: #222;
     }
 
-    .preview h2 {
+    .resume-left h2 {
       font-size: 18px;
       font-weight: 500;
       color: #5f27cd;
@@ -116,12 +144,6 @@
       line-height: 1.6;
     }
 
-    hr {
-      border: none;
-      border-top: 1px solid #eee;
-      margin: 20px 0;
-    }
-
     @media(max-width: 768px) {
       .container {
         flex-direction: column;
@@ -131,8 +153,10 @@
 </head>
 <body>
 
+  <div class="main-heading">💼Resume Builder</div>
+
   <div class="container">
-    <!-- Left Panel -->
+    <!-- Left Panel - Form -->
     <div class="form">
       <h2>Personal Info</h2>
       <input type="text" id="nameInput" placeholder="Full Name" />
@@ -142,6 +166,9 @@
       <input type="text" id="linkedinInput" placeholder="LinkedIn URL" />
       <input type="text" id="githubInput" placeholder="GitHub URL" />
       <input type="text" id="locationInput" placeholder="Location (e.g. Remote, India)" />
+
+      <h2>Education</h2>
+      <textarea id="educationInput" rows="2" placeholder="e.g. B.Tech CSE - XYZ University"></textarea>
 
       <h2>Summary</h2>
       <textarea id="summaryInput" rows="4" placeholder="Brief summary of your background and goals..."></textarea>
@@ -154,50 +181,57 @@
 
       <h2>Projects (comma-separated)</h2>
       <textarea id="projectsInput" rows="2" placeholder="e.g. Portfolio Website, College Management App"></textarea>
-
-      <h2>Hobbies (comma-separated)</h2>
-      <textarea id="hobbiesInput" rows="2" placeholder="e.g. Photography, Blogging, Chess"></textarea>
-
-      <button onclick="downloadPDF()">Download Resume</button>
     </div>
 
-    <!-- Right Panel -->
-    <div class="preview" id="resumePreview">
-      <h1 id="previewName">Your Name</h1>
-      <h2 id="previewRole">Full Stack Developer</h2>
+    <!-- Right Panel - Preview and Download Button -->
+    <div class="preview-wrapper">
+      <div class="preview" id="resumePreview">
+        <div class="resume-wrapper">
+          <!-- Left Column -->
+          <div class="resume-left">
+            <h1 id="previewName">Your Name</h1>
+            <h2 id="previewRole">Full Stack Developer</h2>
 
-      <div class="contact-info">
-        📞 <span id="previewPhone">Phone</span><br />
-        📧 <span id="previewEmail">Email</span><br />
-        🔗 <a href="#" id="previewLinkedIn">LinkedIn</a><br />
-        💻 <a href="#" id="previewGitHub">GitHub</a><br />
-        📍 <span id="previewLocation">Location</span>
+            <div class="contact-info">
+              📞 <span id="previewPhone">Phone</span><br />
+              📧 <span id="previewEmail">Email</span><br />
+              🔗 <a href="#" id="previewLinkedIn">LinkedIn</a><br />
+              💻 <a href="#" id="previewGitHub">GitHub</a><br />
+              📍 <span id="previewLocation">Location</span>
+            </div>
+
+            <div class="section">
+              <h3>Summary</h3>
+              <p id="previewSummary">Your summary goes here.</p>
+            </div>
+
+            <div class="section">
+              <h3>Skills</h3>
+              <ul id="previewSkillsList"></ul>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div class="resume-right">
+            <div class="section">
+              <h3>Education</h3>
+              <p id="previewEducation">Bachelor of Technology in Computer Science - XYZ University</p>
+            </div>
+
+            <div class="section">
+              <h3>Certificates</h3>
+              <ul id="previewCertificatesList"></ul>
+            </div>
+
+            <div class="section">
+              <h3>Projects</h3>
+              <ul id="previewProjectsList"></ul>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="section">
-        <h3>Summary</h3>
-        <p id="previewSummary">Your summary goes here.</p>
-      </div>
-
-      <div class="section">
-        <h3>Skills</h3>
-        <ul id="previewSkillsList"></ul>
-      </div>
-
-      <div class="section">
-        <h3>Certificates</h3>
-        <ul id="previewCertificatesList"></ul>
-      </div>
-
-      <div class="section">
-        <h3>Projects</h3>
-        <ul id="previewProjectsList"></ul>
-      </div>
-
-      <div class="section">
-        <h3>Hobbies</h3>
-        <ul id="previewHobbiesList"></ul>
-      </div>
+      <button onclick="downloadPDF()">Download Resume</button>
     </div>
   </div>
 
@@ -218,7 +252,6 @@
     document.getElementById('skillsInput').addEventListener('input', () => updateList('skillsInput', 'previewSkillsList'));
     document.getElementById('certificatesInput').addEventListener('input', () => updateList('certificatesInput', 'previewCertificatesList'));
     document.getElementById('projectsInput').addEventListener('input', () => updateList('projectsInput', 'previewProjectsList'));
-    document.getElementById('hobbiesInput').addEventListener('input', () => updateList('hobbiesInput', 'previewHobbiesList'));
 
     const fields = [
       ['nameInput', 'previewName'],
@@ -228,7 +261,8 @@
       ['linkedinInput', 'previewLinkedIn'],
       ['githubInput', 'previewGitHub'],
       ['locationInput', 'previewLocation'],
-      ['summaryInput', 'previewSummary']
+      ['summaryInput', 'previewSummary'],
+      ['educationInput', 'previewEducation']
     ];
 
     fields.forEach(([input, preview]) => {
@@ -247,6 +281,5 @@
       html2pdf().from(element).save("resume.pdf");
     }
   </script>
-
 </body>
 </html>

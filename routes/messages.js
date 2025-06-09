@@ -17,13 +17,25 @@ router.post('/contact', async (req, res) => {
 
 router.get('/messages', async (req, res) => {
   try {
-    const messages = await Message.find().sort({ createdAt: -1 });
-    res.render('message', { messages });
+    const filter = req.query.filter || ''; // default to empty string
+    let query = {};
+
+    if (filter === 'read') {
+      query.read = true;
+    } else if (filter === 'unread') {
+      query.read = false;
+    }
+
+    const messages = await Message.find(query).sort({ createdAt: -1 });
+
+    // Pass both messages and filter to EJS
+    res.render('message', { messages, filter });
   } catch (err) {
     console.error(err);
     res.status(500).send('Error fetching messages');
   }
 });
+
 
 router.post('/messages/:id/read', async (req, res) => {
   await Message.findByIdAndUpdate(req.params.id, { read: true });
